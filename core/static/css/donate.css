@@ -1,0 +1,22 @@
+.donation-card:hover {
+    transform: scale(1.03);
+    transition: all 0.3s ease-in-out;
+  }
+  .donate-btn {
+    background-color: #ff9933;
+    border: none;
+  }
+  .donate-btn:hover {
+    background-color: #cc7a00;
+  }
+
+
+  @media (min-width: 768px) {
+    .zigzag:nth-child(even) .icon-col {
+      order: 2;
+      text-align: right;
+    }
+    .zigzag:nth-child(even) .text-col {
+      order: 1;
+    }
+  }

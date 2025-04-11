@@ -1,0 +1,17 @@
+{% extends "event_base_template.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ title }}</h2>
+    <p>{{ event_description }}</p>
+
+    <nav>
+        {% if previous_title %}
+            <a href="{% url 'event_page' title=previous_title %}">Previous</a>
+        {% endif %}
+        {% if next_title %}
+            <a href="{% url 'event_page' title=next_title %}">Next</a>
+        {% endif %}
+    </nav>
+{% endblock %}

@@ -1,0 +1,779 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HKD-Courses</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'images/logo.png' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!--  Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/teachers.css' %}">
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Vertical Sidebar Start -->
+    <div class="vertical-sidebar text-light d-flex flex-column align-items-center justify-content-center py-4 px-3">
+        <div class="d-flex flex-column align-items-center">
+            <a class="social-icon btn btn-link text-light p-0 mb-3"
+                href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a class="social-icon btn btn-link text-light p-0 mb-3"
+                href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank">
+                <i class="fab fa-youtube fa-lg"></i>
+            </a>
+            <a class="social-icon btn btn-link text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank">
+                <i class="fab fa-whatsapp fa-lg"></i>
+            </a>
+            <div class="calendar-container-widget">
+                <a class="social-icon btn btn-link text-light p-0" id="calendar-icon">
+                    <i class="fas fa-calendar-alt fa-lg"></i>
+                </a>
+                <div class="calendar-widget" id="calendar-widget">
+                    <div id="calendar"></div>
+                    <div id="event-tooltip" class="event-widget" style="display: none; position: absolute;"></div>
+                    <div class="calendar-buttons">
+                        <a href="{% url 'calendar' %}" class="btn" id="full-calendar">Discover</a>
+                        <button id="close-calendar">&times; Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="header navbar navbar-expand-lg navbar-light bg-white shadow-lg sticky-top mx-auto rounded"
+        style="max-width: 100%; height: 90px; padding: 10px 0; margin-top: 0; z-index: 1030;">
+
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" height="50" width="50" class="me-3 logo-circle">
+                <span class="hkd-logo-text" id="animated-text">Hare Krishna Devotion</span>
+            </a>
+
+            <!-- Navbar Toggler (Needed for Mobile Screens) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Links (Wrapped in Collapse) -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" style="font-size: 1.1rem; font-weight: 500;">
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown me-4">
+                        <a class="nav-link dropdown-toggle" href="#" id="quickLinksDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+                        <ul class="dropdown-menu" aria-labelledby="quickLinksDropdown">
+                            <li><a class="dropdown-item" href="{% url 'calendar' %}">Vaishnav Calendar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'library' %}">Read With Us</a></li>
+                            <li><a class="dropdown-item" href="{% url 'counter' %}">Chant With Us</a></li>
+                            <li><a class="dropdown-item" href="{% url 'gallary' %}">Gallery</a></li>
+                            <li><a class="dropdown-item" href="{% url 'teachers' %}">Our Teacher</a></li>
+                            <li><a class="dropdown-item" href="{% url 'about' %}#our-team">Our Team</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown me-4">
+                        <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Contact Us</a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item" href="tel:+918109769962" target="_blank">Call Us</a></li>
+                            <li><a class="dropdown-item" href="https://wa.me/918109769962" target="_blank">WhatsApp
+                                    Us</a></li>
+                            <li><a class="dropdown-item" href="mailto:harekrishnadevotion@gmail.com"
+                                    target="_blank">Email Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Donate Button -->
+                <div class="d-flex align-items-center  px-4 py-2 rounded ms-4">
+                    <a href="{% url 'donate' %}" class="btn-donate" target="_blank">Donate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar End -->
+
+    <div class="hamburger-menu d-lg-none" onclick="openNav()">
+        <i class="fas fa-bars"></i>
+    </div>
+    <div class="main-wrapper ">
+        <div class="slider-container">
+            <div class="slide">
+
+                <div class="item" style="background-image: url('{% static "images/slider-krishna.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Sri Krishna</div>
+                        <div class="des">The Supreme Personality of Godhead, source of all incarnations, who first
+                            revealed divine wisdom in the Bhagavad-gītā. He is the original teacher and object of
+                            devotion in Gaudiya Vaishnavism.</div>
+                        <a class="btn btn-primary py-3 px-4" href="#krishna" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('{% static "images/slider-bramha.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Lord Brahma</div>
+                        <div class="des">The first created being in the universe, Lord Brahma received spiritual
+                            knowledge directly from Krishna and initiated the line of paramparā by teaching it to his
+                            disciple, Narada.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#bramha" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('{% static "images/slider-narad.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Narada Muni</div>
+                        <div class="des">A divine sage and eternal devotee who travels across the universe preaching
+                            bhakti-yoga and inspiring countless souls—including Dhruva, Prahlada, and Vyasa—to turn
+                            toward Krishna.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#narada" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('{% static "images/slider-vedvyas.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Veda Vyasa</div>
+                        <div class="des">An incarnation of Krishna, he compiled the Vedas, wrote the Mahabharata, and
+                            gave the world the Śrīmad Bhāgavatam—the essence of all spiritual knowledge focused on
+                            devotion to Krishna.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#vedvyas" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('{% static "images/slider-madhavaharya.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Sri Madhvacharya</div>
+                        <div class="des">The founder of the Dvaita (dualism) school of Vedanta. He restored Vaishnavism
+                            in South India and emphasized the eternal difference between the soul and God, laying a
+                            strong foundation for bhakti philosophy.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#madhvacharya" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('{% static "images/slider-mahaprabhu.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Sri Chaitanya Mahaprabhu</div>
+                        <div class="des">Krishna Himself in the golden form of a devotee. He established the path of
+                            rāga-bhakti (loving devotion) and spread the chanting of the holy names—Hare Krishna—as the
+                            process for liberation in Kali Yuga.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#mahaprabhu" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item"
+                    style="background-image: url('{% static "images/slider-BhaktivinodaThankur.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Srila Bhaktivinoda Thakur</div>
+                        <div class="des">A visionary reformer and the first to envision the worldwide spread of Krishna
+                            consciousness. He revived Gaudiya Vaishnavism, wrote extensively, and rediscovered Lord
+                            Chaitanya’s birthplace in Mayapur.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#bhaktivedantathakur" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('{% static "images/slider-Bhaktisiddhanta.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Srila Bhaktisiddhanta Sarasvati Thakur</div>
+                        <div class="des">Son of Bhaktivinoda Thakur, he boldly challenged ritualism and caste pride. He
+                            founded the Gaudiya Math and initiated scholarly yet renounced preachers, paving the way for
+                            the global mission.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#bhaktisidhantthakur" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+                <div class="item" style="background-image: url('{% static "images/slider-prabhupada.jpg" %}');">
+                    <div class="content">
+                        <div class="name">Srila A.C. Bhaktivedanta Swami Prabhupada</div>
+                        <div class="des">The Founder-Ācārya of ISKCON, he fulfilled the dream of his predecessors by
+                            bringing Krishna consciousness to the West. He translated over 80 volumes of Vedic texts,
+                            established more than 100 temples, and transformed millions of lives through the chanting of
+                            Hare Krishna.</div>
+                            <a class="btn btn-primary py-3 px-4" href="#prabhupada" style="scroll-margin-top: 80px;">See More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button">
+                <button class="prev btn btn-primary"><i class="bi bi-caret-left-fill"></i></button>
+                <button class="next btn btn-primary"><i class="bi bi-caret-right-fill"></i></button>
+            </div>
+
+        </div>
+    </div>
+
+    <section class="section" id="krishna">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Krishna: The Original Teacher (Ādi-Guru)</h2>
+
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                In <strong>Gaudiya Vaishnavism</strong>, Lord <strong>Shri Krishna</strong> is not only worshipped as
+                the Supreme Personality of Godhead, but also honored as the <strong>Ādi-Guru</strong>—the <em>original
+                    spiritual teacher</em>. His divine teachings in the <em>Bhagavad Gita</em> illuminate the eternal
+                truth of the soul and the supreme path of <strong>bhakti</strong> (devotion).
+            </p>
+        </div>
+
+        <div class="section-content reverse-false">
+            <img src="{% static 'images/poster-krishna.jpg' %}" alt="Krishna teaching Arjuna" class="section-img" />
+            <div class="section-text">
+                <h4>📜 Teachings from the Bhagavad Gita</h4>
+                <p>
+                    <strong>“Imam vivasvate yogam proktavān aham avyayam<br>
+                        Vivasvān manave prāha manur ikṣvākave ’bravīt”</strong><br>
+                    <em>Bhagavad Gita 4.1</em><br>
+                    “I instructed this imperishable science of yoga to the sun-god Vivasvan. Vivasvan passed it to Manu,
+                    and Manu gave it to Ikshvaku.”
+                </p>
+                <p>
+                    <strong>“Tad viddhi praṇipātena paripraśnena sevayā<br>
+                        Upadekṣyanti te jñānaṁ jñāninas tattva-darśinaḥ”</strong><br>
+                    <em>Bhagavad Gita 4.34</em><br>
+                    “Learn the truth by approaching a spiritual master. Ask with humility and serve them. The
+                    self-realized can impart knowledge because they have seen the truth.”
+                </p>
+                <p>
+                    These verses establish Krishna as the origin of the <strong>paramparā (disciplic
+                        succession)</strong>. His teachings are timeless, echoed through the lives of great saints, and
+                    fully embodied by <strong>Sri Chaitanya Mahaprabhu</strong>, who descended to spread Krishna’s love
+                    through <em>nama-sankirtana</em>—the chanting of the holy names.
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                To accept Krishna as the original teacher is to walk the path of humble inquiry, surrender, and loving
+                service—knowing that the Supreme Lord Himself is guiding the heart of every sincere soul.
+            </em>
+        </p>
+    </section>
+    <!-- Guru Parampara Sections -->
+
+    <!-- 1. Brahma -->
+    <section class="section" id ="bramha">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Brahma: The First Student in the Universe</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                At the beginning of creation, <strong>Lord Brahma</strong> appeared on a lotus emanating from the navel
+                of Lord Vishnu. In utter darkness and confusion, he performed deep meditation, desiring to know the
+                Supreme. In response, <strong>Krishna revealed transcendental knowledge</strong> within his heart,
+                making Brahma the first recipient of Vedic wisdom and the original teacher in the
+                <strong>Brahma-Madhva-Gaudiya sampradaya</strong>.
+            </p>
+        </div>
+        <div class="section-content reverse-true">
+            <img src="{% static 'images/poster-bramha.jpg' %}" alt="Lord Brahma" class="section-img" />
+            <div class="section-text">
+                <h4>✨ Divine Revelation: Tene Brahma Hṛdā</h4>
+                <p>
+                    <strong>“Tene brahma hṛdā ya ādi-kavaye”</strong><br>
+                    <em>Śrīmad Bhāgavatam 1.1.1</em><br>
+                    “The Lord imparted Vedic knowledge into the heart of Brahma, the original poet and engineer of the
+                    universe.”
+                </p>
+                <p>
+                    <strong>“īśvaraḥ sadyo hṛdy avarudhyate ’tra kṛtibhyaḥ śuśrūṣubhis tat-kṣaṇāt”</strong><br>
+                    <em>Śrīmad Bhāgavatam 1.1.2</em><br>
+                    “The Supreme Lord is immediately captured in the heart of those who are eager to hear about Him with
+                    devotion.”
+                </p>
+                <p>
+                    Brahma’s realization is preserved in the <strong>Brahma-saṁhitā</strong>, a sublime treatise
+                    glorifying Krishna as the Supreme Personality of Godhead. He taught that devotional service is the
+                    highest path and that Krishna is the origin of all creation.
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Lord Brahma’s humility and meditation show that true knowledge descends—not through speculation but
+                through surrender to the divine.
+            </em>
+        </p>
+    </section>
+
+    <!-- 2. Narada Muni -->
+    <section class="section" id="narada">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Narada Muni: The Eternal Messenger of Bhakti</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                A transcendental sage and tireless preacher, <strong>Narada Muni</strong> travels across the material
+                and spiritual worlds, spreading devotion to the Lord through music, wisdom, and personal example. As the
+                son of Brahma, he received knowledge directly from his father and became an empowered spiritual teacher,
+                initiating great souls like Dhruva, Prahlada, and Veda Vyasa.
+            </p>
+        </div>
+        <div class="section-content reverse-false">
+            <img src="{% static 'images/poster-narada.jpg' %}" alt="Narada Muni" class="section-img" />
+            <div class="section-text">
+                <h4>🎶 Glorifying the Lord through Music & Wisdom</h4>
+                <p>
+                    Narada’s own transformation—from a humble servant’s son to a self-realized devotee—teaches the power
+                    of <strong>association and service</strong>. After lifetimes of devotion, he attained an eternal
+                    spiritual body and now constantly chants the Lord’s names with his veena.
+                </p>
+                <p>
+                    <strong>“sa vai manaḥ kṛṣṇa-padāravindayor vacāṁsi vaikuṇṭha-guṇānuvarṇane”</strong><br>
+                    <em>Śrīmad Bhāgavatam 9.4.18</em><br>
+                    “He engaged his mind fully in the lotus feet of Krishna and his words in describing His glories.”
+                </p>
+                <p>
+                    His teachings in the <em>Narada-bhakti-sutra</em> emphasize that <strong>pure bhakti</strong> is the
+                    goal of all scriptures and that the heart of the devotee is the true temple of God.
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Narada Muni's life reminds us that devotional service transforms even the most humble soul into a
+                messenger of the Lord.
+            </em>
+        </p>
+    </section>
+
+    <!-- 3. Veda Vyasa -->
+    <section class="section" id="vedvyas">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Veda Vyasa: The Literary Incarnation of God</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                <strong>Veda Vyasa</strong>, a literary incarnation of the Lord and disciple of Narada Muni, compiled
+                the Vedas, wrote the Mahabharata and authored the <em>Vedanta Sutras</em>. Yet, he remained dissatisfied
+                until he composed the <strong>Srimad Bhagavatam</strong>, focusing solely on the glories of Lord Krishna
+                and pure devotional service.
+            </p>
+        </div>
+        <div class="section-content reverse-true">
+            <img src="{% static 'images/poster-vedvyas.jpg' %}" alt="Veda Vyasa" class="section-img" />
+            <div class="section-text">
+                <h4>📚 Srimad Bhagavatam: His Final Offering</h4>
+                <p>
+                    Vyasa’s dialogue with Narada Muni reveals that unless one glorifies Krishna, spiritual texts cannot
+                    satisfy the soul. The Bhagavatam, therefore, is the crown jewel of all scriptures and the heart of
+                    Gaudiya Vaishnava theology.
+                </p>
+                <p>
+                    <strong>“idam bhāgavataṁ nāma purāṇaṁ brahma-sammitam”</strong><br>
+                    <em>Śrīmad Bhāgavatam 2.9.36</em><br>
+                    “This Śrīmad Bhāgavatam is as brilliant as the sun, and it has arisen just after the departure of
+                    Lord Krishna to His own abode.”
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Srila Vyasa's contribution gives us the foundation to understand the Lord, His pastimes, and the
+                supremacy of bhakti.
+            </em>
+        </p>
+    </section>
+
+    <!-- 4. Madhvacharya -->
+    <section class="section" id = "madhvacharya">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Madhvacharya: Champion of Dualism</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                <strong>Madhvacharya</strong>, the founder of the Dvaita (dualism) school of Vedanta, emphasized the
+                eternal distinction between the individual soul and the Supreme Lord. As an incarnation of Vayu, he
+                powerfully refuted impersonalism and established personal theism based on scriptural evidence.
+            </p>
+        </div>
+        <div class="section-content reverse-false">
+            <img src="{% static 'images/poster-madhavarya.jpg' %}" alt="Madhvacharya" class="section-img" />
+            <div class="section-text">
+                <h4>⚖️ Five-fold Difference</h4>
+                <p>
+                    His doctrine of <strong>pancha-bheda</strong>—five eternal distinctions—laid a strong foundation for
+                    devotional theism. He also traveled extensively, debating scholars and writing commentaries on the
+                    Bhagavad Gita and Upanishads.
+                </p>
+                <p>
+                    <strong>“nityaḥ śuddho nirmalaḥ sarva-śakti-samanvitaḥ”</strong><br>
+                    “The Lord is eternal, pure, flawless, and full of all potencies.”<br>
+                    This was a core principle he emphasized in refuting Mayavada philosophy.
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Madhvacharya's teachings cleared the path for the personalist devotion that flourished in Gaudiya
+                Vaishnavism.
+            </em>
+        </p>
+    </section>
+
+    <!-- 5. Chaitanya Mahaprabhu -->
+    <section class="section" id = "mahaprabhu">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Sri Chaitanya Mahaprabhu: The Golden Avatar of Love</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                <strong>Sri Chaitanya Mahaprabhu</strong> is Krishna Himself, descended in the mood of a devotee to
+                teach and relish the sweetness of loving devotion. He inaugurated the <strong>sankirtana
+                    movement</strong>, encouraging everyone to chant the holy names: <em>Hare Krishna Hare Krishna
+                    Krishna Krishna Hare Hare / Hare Rama Hare Rama Rama Rama Hare Hare</em>.
+            </p>
+        </div>
+        <div class="section-content reverse-true">
+            <img src="{% static 'images/poster-lord-chaitanya.jpg' %}" alt="Chaitanya Mahaprabhu" class="section-img" />
+            <div class="section-text">
+                <h4>🕊️ Lord in Devotee Mood</h4>
+                <p>
+                    Through His associates—the Six Goswamis—Mahaprabhu established the theology and practice of
+                    <strong>rāgānugā bhakti</strong>. His life was the perfect example of humility, love, and spiritual
+                    ecstasy.
+                </p>
+                <p>
+                    <strong>“nāmnām akāri bahudhā nija-sarva-śaktiḥ”</strong><br>
+                    <em>Śikṣāṣṭakam 2</em><br>
+                    “O Lord, You have invested all Your transcendental energies in Your holy names, which You have
+                    kindly made easily available.”
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Lord Chaitanya’s gift of the holy name is the greatest benediction in this age of Kali.
+            </em>
+        </p>
+    </section>
+
+    <!-- 6. Bhaktivinoda Thakur -->
+    <section class="section" id ="bhaktivedantathakur">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Bhaktivinoda Thakur: The Pioneer of Modern Bhakti Revival</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                <strong>Bhaktivinoda Thakur</strong> was a visionary saint, author, and magistrate who rediscovered the
+                birthsite of Chaitanya Mahaprabhu and revived Gaudiya Vaishnavism in a time of decline. He wrote over a
+                hundred devotional works, presenting bhakti philosophy in a way that appealed to both scholars and the
+                common people.
+            </p>
+        </div>
+        <div class="section-content reverse-false">
+            <img src="{% static 'images/poster-sbv-prabhuji.jpg' %}" alt="Bhaktivinoda Thakur" class="section-img" />
+            <div class="section-text">
+                <h4>🌱 Planting the Seeds of a Global Movement</h4>
+                <p>
+                    His writings such as <em>Jaiva Dharma</em> and <em>Hari-nāma-cintāmaṇi</em> laid the foundation for
+                    a worldwide renaissance of Krishna consciousness. He envisioned the day when devotees from across
+                    the globe would gather at Mayapur to chant the holy names in unison.
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Bhaktivinoda Thakur’s dedication and insight bridged tradition and modernity, making timeless truths
+                accessible to the world.
+            </em>
+        </p>
+    </section>
+
+    <!-- 7. Bhaktisiddhanta Saraswati Thakur -->
+    <section class="section" id ="bhaktisidhantthakur">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Bhaktisiddhanta Saraswati Thakur: The Lion Guru</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                <strong>Bhaktisiddhanta Saraswati Thakur</strong>, the son of Bhaktivinoda Thakur, revolutionized
+                spiritual outreach in India. A fearless preacher, he established 64 Gaudiya Maths and emphasized purity,
+                discipline, and the urgent need to distribute Krishna consciousness.
+            </p>
+        </div>
+        <div class="section-content reverse-true">
+            <img src="{% static 'images/poster-sbst-prabhuji.jpg' %}" alt="Bhaktisiddhanta Saraswati Thakur"
+                class="section-img" />
+            <div class="section-text">
+                <h4>🦁 Bold Voice for Parampara</h4>
+                <p>
+                    He reinstated the authentic teachings of Mahaprabhu, stood firm against casteism, and trained
+                    dedicated disciples to spread the holy name far and wide. His lion-like roar silenced speculative
+                    interpretations of scripture.
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Bhaktisiddhanta Saraswati’s uncompromising stand paved the way for the worldwide mission that would
+                follow.
+            </em>
+        </p>
+    </section>
+
+    <!-- 8. Srila Prabhupada -->
+    <section class="section" id ="prabhupada">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Srila Prabhupada: The World Teacher</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                <strong>His Divine Grace A. C. Bhaktivedanta Swami Prabhupada</strong>, founder-acharya of the
+                International Society for Krishna Consciousness (ISKCON), fulfilled the prophecy of Lord Chaitanya by
+                taking Krishna consciousness to every town and village.
+            </p>
+        </div>
+        <div class="section-content reverse-false">
+            <img src="{% static 'images/poster-prabhupada-prabhuji.jpg' %}" alt="Srila Prabhupada" class="section-img" />
+            <div class="section-text">
+                <h4>🌍 Carrying Bhakti to the World</h4>
+                <p>
+                    At age 69, he journeyed alone to the West with just a trunk of books and firm faith in the holy
+                    name. Within a decade, he translated over 80 volumes of Vedic texts, initiated thousands of
+                    disciples, and established 100+ temples globally.
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Srila Prabhupada’s life exemplifies empowered service, proving that sincere devotion can move the entire
+                world.
+            </em>
+        </p>
+    </section>
+    <!-- Lokanath Swami Maharaja -->
+    <section class="section" >
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Lokanath Swami Maharaja: The Tireless Servant of the Holy Name</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                A direct disciple of <strong>Srila Prabhupada</strong> and a beloved spiritual leader in ISKCON,
+                <strong>Lokanath Swami Maharaja</strong> is renowned for his deep humility, profound devotion, and
+                relentless commitment to spreading <em>nama-sankirtana</em>. As the <strong>Padayatra pioneer</strong>,
+                he traveled by foot across India and the globe, carrying the holy name to every town and village as
+                Prabhupada envisioned.
+            </p>
+        </div>
+        <div class="section-content reverse-true">
+            <img src="{% static 'images/poster-loknath-maharaj.jpg' %}" alt="Lokanath Swami Maharaja" class="section-img" />
+            <div class="section-text">
+                <h4>🦶 Walking the Path of Bhakti</h4>
+                <p>
+                    Lokanath Maharaja embodies the life of a modern-day <em>parivrajakacharya</em>, spreading Krishna
+                    consciousness through preaching, kirtan, and books. His heart is fully immersed in <strong>serving
+                        the devotees</strong>, organizing grand festivals like Kumbha Mela and constantly inspiring
+                    through his simplicity and surrender.
+                </p>
+                <p>
+                    <strong>“kīrtanīyaḥ sadā hariḥ”</strong><br>
+                    <em>Śikṣāṣṭakam 3</em><br>
+                    “One should chant the holy name of the Lord in a humble state of mind, considering oneself lower
+                    than the straw in the street…”
+                </p>
+                <p>
+                    <strong>“harer nāma harer nāma harer nāmaiva kevalam<br>
+                        kalau nāsty eva nāsty eva nāsty eva gatir anyathā”</strong><br>
+                    <em>Bṛhan-nāradīya Purāṇa 38.126</em><br>
+                    “In this age of Kali, there is no other way, no other way, no other way than chanting the holy name
+                    of the Lord.”
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Lokanath Swami Maharaja teaches us that the path to Krishna lies through humble service, tireless
+                chanting, and spreading joy through the holy name.
+            </em>
+        </p>
+    </section>
+
+    <section class="section">
+        <div class="section-heading">
+            <h2 style="margin-bottom: 1.5rem;">Vasushreshta Prabhuji: A Gentle Torchbearer of Devotion</h2>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+                A beloved servant of ISKCON Ujjain and dear disciple of <strong>Lokanath Swami Maharaja</strong>, 
+                <strong>Vasushreshta Prabhuji</strong> quietly exemplifies the mood of a true <em>sevaka</em>. 
+                With unwavering commitment and deep humility, he inspires many through his dedication to <em>seva</em>, 
+                Krishna-katha, and humble living — becoming a living embodiment of bhakti in everyday action.
+            </p>
+        </div>
+        <div class="section-content reverse-false">
+            <img src="{% static 'images/poster-vasu-prabhuji.jpg' %}" alt="Vasushreshta Prabhuji" class="section-img" />
+            <div class="section-text">
+                <h4>🧎 A Life of Humble Service</h4>
+                <p>
+                    Whether through temple services, guiding newcomers, or softly chanting the holy name, 
+                    Prabhuji’s life shines with simplicity, steadiness, and surrender — rooted in the teachings of his spiritual master and Srila Prabhupada.
+                </p>
+                <p>
+                    <strong>“tad viddhi praṇipātena paripraśnena sevayā”</strong><br>
+                    <em>Bhagavad-gītā 4.34</em><br>
+                    “Learn the truth by approaching a spiritual master. Inquire from him with reverence and render service unto him.”
+                </p>
+                <p>
+                    <strong>“śuśrūṣoḥ śraddadhānasya vāsudeva-kathā-ruciḥ”</strong><br>
+                    <em>Śrīmad Bhāgavatam 1.2.16</em><br>
+                    “For those who have firm faith and engage in devotional service, a taste for Krishna-katha naturally awakens.”
+                </p>
+                <p>
+                    <strong>“tṛṇād api sunīcena taror api sahiṣṇunā”</strong><br>
+                    <em>Śikṣāṣṭakam 3</em><br>
+                    “One should be more humble than a blade of grass and more tolerant than a tree…”
+                </p>
+            </div>
+        </div>
+        <p class="section-conclusion">
+            <em>
+                Through quiet commitment and pure-hearted seva, Vasushreshta Prabhuji reminds us that true leadership lies in humility, and real bhakti shines through service.
+            </em>
+        </p>
+    </section>
+    
+
+    <!-- Dhir Lalit Das -->
+<section class="section">
+    <div class="section-heading">
+      <h2 style="margin-bottom: 1.5rem;">Dhir Lalit Das: A Gentle Voice of Krishna Consciousness</h2>
+      <p style="max-width: 800px; margin: 0 auto; font-size: 18px; color: var(--dark); line-height: 1.6;">
+        <strong>Dhir Lalit Das</strong>, a soft-spoken and deeply philosophical preacher from ISKCON Ujjain, is known for his calm demeanor, crystal-clear explanations of scripture, and heartfelt commitment to the mission of <strong>Srila Prabhupada</strong>. A scholar and mentor, he connects with hearts through his grounded humility and scriptural insight.
+      </p>
+    </div>
+    <div class="section-content reverse-true">
+      <img src="{% static 'images/poster-dhir-prabhuji.jpg' %}" alt="Dhir Lalit Das" class="section-img" />
+      <div class="section-text">
+        <h4>🪔 Humility, Wisdom, and Deep Faith</h4>
+        <p>
+          His teachings are soaked in the nectar of <strong>Gaudiya siddhanta</strong> and he lovingly guides many towards deeper spiritual life, encouraging consistency in chanting, seva, and study. Known especially for his focus on <em>inner cultivation</em>, he emphasizes that bhakti is a journey of the heart, not just of practice.
+        </p>
+        <p>
+          <strong>“tṛṇād api sunīcena taror iva sahiṣṇunā…”</strong><br>
+          <em>Śikṣāṣṭakam 3</em><br>
+          “One should be more humble than a blade of grass and more tolerant than a tree…” — a verse he lives by.
+        </p>
+        <p>
+          He often quotes and reflects upon Bhaktivinoda Ṭhākura’s works and reminds devotees to not lose the sweetness of the holy name in the speed of modern life.
+        </p>
+      </div>
+    </div>
+    <p class="section-conclusion">
+      <em>
+        Dhir Lalit Das inspires by example — showing that quiet, introspective devotion can be as powerful as the loudest kirtan, when offered from the heart.
+      </em>
+    </p>
+  </section>
+  
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Our Office</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Ujjain, MP, India</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 8109769962</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>hkdsupport@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="social-icon btn btn-link text-light p-0 mb-3"
+                            href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a class="social-icon btn btn-link text-light p-0 mb-3"
+                        href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank">
+                        <i class="fab fa-youtube fa-lg"></i>
+                    </a>
+                    <a class="social-icon btn btn-link text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank">
+                        <i class="fab fa-whatsapp fa-lg"></i>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+
+                    <p class="mb-2"> <a href="{% url 'home' %}">About Us</a></p>
+                    <p class="mb-2"> <a href="{% url 'courses' %}">Courses</a></p>
+                    <p class="mb-2"> <a href="{% url 'gallary' %}">Gallary</a></p>
+                    <p class="mb-2"> <a href="{% url 'donate' %}" href="">Donate</a></p>
+
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Subscribe</h4>
+                    <p>Take the first step towards a spiritually fulfilling life!</p>
+                    <div class="position-relative w-100">
+                        <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text"
+                            placeholder="Your email">
+                        <button type="button"
+                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="{% url 'home' %}">harekrishnadevotion</a>, All Right Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+
+
+    <!-- Back to Top -->
+    <a href="{% url 'about' %}" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+    <script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/parallax/parallax.min.js' %}"></script>
+    <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <!--  Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/calendar.js' %}"></script>
+    <script src="{% static 'js/teachers.js' %}"></script>
+</body>
+
+</html>

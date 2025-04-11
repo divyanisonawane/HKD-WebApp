@@ -1,0 +1,77 @@
+/* Full calendar on calendar.html */
+
+body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(10px);
+    background-image: url("% static %"); /* Smooth transition for background change */
+}
+
+#calendar {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+#calendar .fc-view-container {
+    padding: 30px;
+    background-color: var(--light-yellow-highlight);
+    -webkit-box-shadow: 0 15px 30px 0 var(--dark);
+    box-shadow: 0 15px 30px 0 var(--dark);
+}
+
+.fc-event {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow: hidden;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.fc-day-grid-event .fc-content {
+    white-space: normal !important;
+}
+
+.fc-day-header {
+    background-color: var(--dark) !important;
+    color: var(--light-yellow-highlight) !important;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.fc-day.fc-today {
+    background-color: var(--dark) !important;
+    color: var(--light-yellow-highlight) !important;
+}
+
+.fc-day.fc-today a {
+    color: var(--light-yellow-highlight) !important;
+}
+
+.fc-popover.fc-more-popover {
+    background-color: var(--pink-highlight) !important;
+    color: var(--orange) !important;
+    border: none !important;
+}
+
+
+.fc-popover.fc-more-popover .fc-popover-body {
+    background-color: var(--orange) !important;
+    color: var(--orange) !important;
+}
+
+.fc-popover .fc-header.fc-widget-header {
+    background-color: var(--dark) !important;
+    color: var(--light-yellow-highlight) !important;
+}
+
+.fc-widget a {
+    color: var(--light-yellow-highlight) !important; 
+    text-decoration: none !important;
+}
+
+.fc-widget a:hover {
+    color: var(--orange)!important; 
+    text-decoration: underline !important; 
+}

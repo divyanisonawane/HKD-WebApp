@@ -1,0 +1,885 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>HKD-About</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'images/logo.png' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!--  Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+</head>
+
+<body>
+
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Vertical Sidebar Start -->
+    <div class="vertical-sidebar text-light d-flex flex-column align-items-center justify-content-center py-4 px-3">
+        <div class="d-flex flex-column align-items-center">
+            <a class="social-icon btn btn-link text-light p-0 mb-3"
+                href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank">
+                <i class="fab fa-instagram fa-lg"></i>
+            </a>
+            <a class="social-icon btn btn-link text-light p-0 mb-3"
+                href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank">
+                <i class="fab fa-youtube fa-lg"></i>
+            </a>
+            <a class="social-icon btn btn-link text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank">
+                <i class="fab fa-whatsapp fa-lg"></i>
+            </a>
+            <div class="calendar-container-widget">
+                <a class="social-icon btn btn-link text-light p-0" id="calendar-icon">
+                    <i class="fas fa-calendar-alt fa-lg"></i>
+                </a>
+                <div class="calendar-widget" id="calendar-widget">
+                    <div id="calendar"></div>
+                    <div id="event-tooltip" class="event-widget" style="display: none; position: absolute;"></div>
+                    <div class="calendar-buttons">
+                        <a href="{% url 'calendar' %}" class="btn" id="full-calendar">Discover</a>
+                        <button id="close-calendar">&times; Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="header navbar navbar-expand-lg navbar-light bg-white shadow-lg sticky-top mx-auto rounded"
+        style="max-width: 100%; height: 90px; padding: 10px 0; margin-top: 0; z-index: 1030;">
+
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" height="50" width="50" class="me-3 logo-circle">
+                <span class="hkd-logo-text" id="animated-text">Hare Krishna Devotion</span>
+            </a>
+
+            <!-- Navbar Toggler (Needed for Mobile Screens) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Links (Wrapped in Collapse) -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" style="font-size: 1.1rem; font-weight: 500;">
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item me-4">
+                        <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+                    </li>
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown me-4">
+                        <a class="nav-link dropdown-toggle" href="#" id="quickLinksDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Quick Links</a>
+                        <ul class="dropdown-menu" aria-labelledby="quickLinksDropdown">
+                            <li><a class="dropdown-item" href="{% url 'calendar' %}">Vaishnav Calendar</a></li>
+                            <li><a class="dropdown-item" href="{% url 'library' %}">Read With Us</a></li>
+                            <li><a class="dropdown-item" href="{% url 'counter' %}">Chant With Us</a></li>
+                            <li><a class="dropdown-item" href="{% url 'gallary' %}">Gallery</a></li>
+                            <li><a class="dropdown-item" href="{% url 'teachers' %}">Our Teacher</a></li>
+                            <li><a class="dropdown-item" href="{% url 'about' %}#our-team">Our Team</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown me-4">
+                        <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Contact Us</a>
+                        <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+                            <li><a class="dropdown-item" href="tel:+918109769962" target="_blank">Call Us</a></li>
+                            <li><a class="dropdown-item" href="https://wa.me/918109769962" target="_blank">WhatsApp
+                                    Us</a></li>
+                            <li><a class="dropdown-item" href="mailto:harekrishnadevotion@gmail.com"
+                                    target="_blank">Email Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Donate Button -->
+                <div class="d-flex align-items-center  px-4 py-2 rounded ms-4">
+                    <a href="{% url 'donate' %}" class="btn-donate" target="_blank">Donate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar End -->
+
+    <div class="hamburger-menu d-lg-none" onclick="openNav()">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+            <h4>भक्तपदधूलीश्च भक्तपदजलम्। भक्तभुक्तावशेषं च त्रिणि महाबलानि।।</h4>
+            <!-- <h4>हरेर्नाम हरेर्नाम हरेर्नामैव केवलम्। कलौ नास्त्येव नास्त्येव नास्त्येव गतिरन्यथा॥</h4> -->
+            <h1 class="display-5">Who are We? What we do?</h1>
+            </h1>
+        </div>
+
+        <div class="container">
+            <div class="row g-5 align-items-center container-hover">
+
+                <!-- Video Section -->
+                <div class="col-lg-4 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="text-center rounded py-5 px-4 shadow-hover video-container">
+                        <video class="img-fluid rounded about-image video-glow" autoplay loop muted playsinline>
+                            <source src="{% static 'video/bg-11.2.40.mp4' %}" type="video/mp4">
+                            <img src="{% static 'images/bg-11.2.40.jpg' %}">
+
+                        </video>
+                    </div>
+                </div>
+
+
+                <!-- Main Text Section -->
+                <div class="col-lg-5 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
+
+                    <h3 class="display-6 mb-4">Serving Sri Krishna with Love, Spreading Bhakti with Joy!</h3>
+                    <h3 class="display-6 mb-4"></h3>
+                    <p class="mb-4">
+                        We are humble servants of Sri Krishna, dedicated to spreading the Bhakti movement started by Sri
+                        Chaitanya Mahaprabhu. <br><br>Through our small initiatives—Bhagavad Gita & Srimad Bhagavatam
+                        classes,
+                        devotional yatras, and digital seva—we strive to inspire and uplift souls on the path of Krishna
+                        consciousness.<br><br>
+                        <i> "By serving devotees who are completely free from all vice, great service is done, and one
+                            gains affinity for hearing about the Supreme Lord." – Srimad Bhagavatam 1.2.16</i><br><br>
+                        With faith, devotion, and service, we aim to bring more hearts closer to the divine love of
+                        Radha-Krishna. Join us in this spiritual journey!
+                    </p>
+                    <button id="openFormBtn"  class="btn btn-primary py-3 px-4" href="">Register Now!</a>
+                    
+                </div>
+                <div id="popupForm" class="popup-overlay">
+                    <div class="popup-content">
+                        <span id="closePopupBtn" class="close-btn">&times;</span>
+                
+                        <!-- Register Form Start -->
+                        <div class="container-fluid quote py-5" data-parallax="scroll"
+                            data-image-src="{% static 'images/carousel-2.jpg' %}">
+                            <div class="container py-3">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-12">
+                                        <div class="bg-white rounded p-4 p-sm-5">
+                                            <h1 class="display-6 text-center mb-4">Get In Touch With HKD</h1>
+                                            <form action="{% url 'submit_contact' %}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="row g-3">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control bg-light border-0" name="name" placeholder="Your Name" required>
+                                                            <label for="name">Your Name</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-floating">
+                                                            <input type="email" class="form-control bg-light border-0" name="email" placeholder="Your Email" required>
+                                                            <label for="email">Your Email</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control bg-light border-0" name="address" placeholder="Your Address" required>
+                                                            <label for="address">Your City, State</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control bg-light border-0" name="mobile" placeholder="Your Mobile" required>
+                                                            <label for="mobile">Your Mobile</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        <button class="btn btn-primary py-3 px-4" type="submit">Submit Now</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Register Form End -->
+                    </div>
+                </div>
+                
+
+                <!-- Awards and Team Section -->
+                <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="row g-4">
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <i class="fa fa-award fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">Award Winning</h4>
+                                <span>Recognized for our dedication and service in spreading Krishna
+                                    consciousness.</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-12">
+                            <div class="border-start ps-4">
+                                <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                                <h4 class="mb-3">Dedicated Team</h4>
+                                <span>Our team works tirelessly to spread the teachings of Lord Krishna with love and
+                                    joy.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Mission Start -->
+
+    <div class="container-xxl py-5 mission-container">
+        <div class="container">
+            <!-- Section Title -->
+            <div class="text-center mx-auto wow fadeInUp mb-5" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h4 class="fs-2 fw-bold text-primary">Our Mission</h4>
+                <p class="lead text-dark">
+                    In this fast-paced world, where material distractions dominate, HKD provides a sanctuary for
+                    spiritual seekers who wish to reconnect with their true selves. We follow the process given in the
+                    scriptures:
+                </p>
+            </div>
+
+            <!-- Four Columns Grid -->
+            <div class="row g-4">
+                <!-- Śravaṇam -->
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded d-flex h-100 p-3 shadow">
+                        <div class="service-img rounded overflow-hidden">
+                            <img class="img-fluid" src="{% static 'images/sravanam.jpg' %}" alt="Śravaṇam">
+                        </div>
+                        <div class="service-text rounded p-4">
+                            <div class="btn-square rounded-circle mx-auto mb-2">
+                                <i class="bi bi-play-circle" style="font-size: 2rem;"></i>
+                            </div>
+                            <h4 class="mb-3">Śravaṇam (Hearing)</h4>
+                            <p class="text-muted">Listening to the Bhagavad Gita, Srimad Bhagavatam, and Chaitanya
+                                Charitamrita under the guidance of realized devotees.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kīrtanam -->
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item rounded d-flex h-100 p-3 shadow">
+                        <div class="service-img rounded overflow-hidden">
+                            <img class="img-fluid" src="{% static 'images/kirtanam.jpg' %}" alt="Kīrtanam">
+                        </div>
+                        <div class="service-text rounded p-4">
+                            <div class="btn-square rounded-circle mx-auto mb-2">
+                                <i class="bi bi-music-note-beamed"  style="font-size: 2rem;"></i>
+                            </div>
+                            <h4 class="mb-3">Kīrtanam (Chanting)</h4>
+                            <p class="text-muted">Engaging in daily mantra meditation (japa) and congregational kirtans
+                                to purify the heart.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smaranam -->
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item rounded d-flex h-100 p-3 shadow">
+                        <div class="service-img rounded overflow-hidden">
+                            <img class="img-fluid" src="{% static 'images/smaranam.jpg' %}" alt="Smaranam">
+                        </div>
+                        <div class="service-text rounded p-4">
+                            <div class="btn-square rounded-circle mx-auto mb-2">
+                                <i class="bi bi-gem"  style="font-size: 2rem;"></i>
+                            </div>
+                            <h4 class="mb-3">Smaranam (Remembering)</h4>
+                            <p class="text-muted ">Meditating on Krishna’s pastimes, qualities, and name, fostering a
+                                deep personal relationship with the Lord.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Satsanga -->
+                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item rounded d-flex h-100 p-3 shadow">
+                        <div class="service-img rounded overflow-hidden">
+                            <img class="img-fluid" src="{% static 'images/Satsanga.jpg' %}" alt="Satsanga">
+                        </div>
+                        <div class="service-text rounded p-4">
+                            <div class="btn-square rounded-circle mx-auto mb-2">
+                                <i class="bi bi-person-hearts" style="font-size: 2rem;"></i>
+                            </div>
+                            <h4 class="mb-3">Satsanga (Association)</h4>
+                            <p class="text-muted">Building a supportive spiritual community that encourages each other
+                                in the path of bhakti.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spiritual Quote Section -->
+            <div class="mx-auto wow fadeInUp p-4  mt-5 shadow-hover" data-wow-delay="0.1s" style="max-width: 900px;">
+                <h4 class="display-6 fw-bold text-primary text-center mb-4">Inspired by Sri Chaitanya Mahaprabhu</h4>
+
+                <p class="lead text-dark text-justify" style="text-align: justify;">
+                    He emphasized the chanting of the <strong>Hare Krishna Mahamantra</strong> as the prime method of
+                    self-realization in Kali Yuga.
+                    We follow the path of pure devotional service as described in the <em>Bhakti-rasamrita-sindhu</em>
+                    by Srila Rupa Goswami:
+                </p>
+
+                <blockquote class="blockquote text-success fw-semibold text-center">
+                    <p class="mb-2">"anyābhilāṣitā-śūnyaṁ jñāna-karmādy-anāvṛtam ānukūlyena kṛṣṇānu-śīlanaṁ bhaktir
+                        uttamā"</p>
+                </blockquote>
+
+                <p class="fst-italic text-secondary text-justify" style="text-align: justify;">
+                    "Pure devotional service means engaging all our activities in Krishna’s service, free from material
+                    desires, knowledge-seeking, or fruitive actions."
+                </p>
+
+                <p class="text-dark text-justify" style="text-align: justify;">
+                    Through these practices, we cultivate a community centered on devotion, service, and spiritual
+                    enlightenment. As Srila Prabhupada taught:
+                </p>
+
+                <h4 class="text-warning fw-bold text-center">"Chant Hare Krishna and be happy!"</h4>
+
+                <p class="mt-4 text-center">
+                    📌 <strong>Join us today and embark on a journey of spiritual transformation!</strong>
+                </p>
+            </div>
+
+        </div>
+    </div>
+    <br><br>
+    <!-- Mission End -->
+
+    <div class="services page_section">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>Why Us?</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row services_row">
+
+                <div
+                    class="col-lg-4 service-item text-center d-flex flex-column align-items-center justify-content-start">
+                    <div class="icon_container d-flex flex-column justify-content-end">
+                        <i class="bi bi-person-vcard-fill" style="font-size: 35px; color: #FF9D23;"></i>
+                    </div>
+                    <h3>👨‍🏫 Expert Mentor</h3>
+                    <h5> Learn from a Dedicated Devotee</h2>
+                        <p class="hover-p-text">Guidance from Dhir Lalit Das, who simplifies complex spiritual teachings and makes learning
+                            deeply enriching.</p>
+                </div>
+
+                <div
+                    class="col-lg-4 service-item text-center d-flex flex-column align-items-center justify-content-start">
+                    <div class="icon_container d-flex flex-column justify-content-end">
+                        <i class="bi bi-people-fill" style="font-size: 35px; color: #FF9D23;"></i>
+                    </div>
+                    <h3>🌿 Devotee Association</h3>
+                    <h5> Grow Spiritually with Like-Minded Souls</h5>
+                    <p class="hover-p-text">Surround yourself with sincere devotees who uplift, inspire, and support you on your path
+                        to
+                        Krishna consciousness.</p>
+                </div>
+
+
+                <div
+                    class="col-lg-4 service-item text-center d-flex flex-column align-items-center justify-content-start">
+                    <div class="icon_container d-flex flex-column justify-content-end">
+                        <i class="bi bi-camera-reels-fill" style="font-size: 35px; color: #FF9D23;"></i>
+                    </div>
+                    <h3>💻 Online Classes</h3>
+                    <h5>Learn Anytime, Anywhere</h5>
+                    <p class="hover-p-text">Join our interactive Bhagavad Gita & Srimad Bhagavatam classes from the comfort of your
+                        home,
+                        with structured and engaging sessions.</p>
+                </div>
+
+
+                <div
+                    class="col-lg-4 service-item text-center d-flex flex-column align-items-center justify-content-start">
+                    <div class="icon_container d-flex flex-column justify-content-end">
+                        <i class="bi bi-question-diamond-fill" style="font-size: 35px; color: #FF9D23;"></i>
+                    </div>
+                    <h3>📝 Online Exams & Certifications</h3>
+                    <h5>Test Your Knowledge & Stay Motivated</h5>
+                    <p class="hover-p-text">Assess your learning with regular online exams and earn certificates to track your
+                        spiritual
+                        progress.</p>
+                </div>
+
+                <div
+                    class="col-lg-4 service-item text-center d-flex flex-column align-items-center justify-content-start">
+                    <div class="icon_container d-flex flex-column justify-content-end">
+                        <i class="bi bi-train-front-fill" style="font-size: 35px; color: #FF9D23;"></i>
+                    </div>
+                    <h3>🚩 Regular Dham Yatras</h3>
+                    <h5>Experience the Holy Dhams with Devotees</h5>
+                    <p class="hover-p-text">Join spiritually uplifting pilgrimages to Vrindavan, Mayapur, Jagannath Puri, and more,
+                        walking in the footsteps of great vaishnavas.</p>
+                </div>
+                <div
+                    class="col-lg-4 service-item text-center d-flex flex-column align-items-center justify-content-start">
+                    <div class="icon_container d-flex flex-column justify-content-end">
+                        <i class="bi bi-person-hearts" style="font-size: 35px; color: #FF9D23;"></i>
+                    </div>
+                    <h3>📖 Daily Spiritual Discussions</h3>
+                    <h5>Engage in Thought-Provoking Conversations</h5>
+                    <p class="hover-p-text">Participate in regular discussions on scriptures, philosophy, and practical applications
+                        of
+                        Krishna consciousness in daily life.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container-fluid top-feature py-5 pt-lg-0">
+        <div class="container py-5 pt-lg-0">
+            <div class="section_title text-center mb-5">
+                <h1>Our Activities</h1>
+            </div>
+            <div class="row gx-4 mb-4">
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="feature-box">
+                        <div class="feature-inner">
+                            <!-- Front Side -->
+                            <div class="front">
+                                <div>
+                                    <h4>📖 Online Classes & Certifications </h4>
+                                    <a href="{% url 'courses' %}" class="hero_box_link">VIEW MORE</a>
+                                </div>
+                            </div>
+                            <!-- Back Side -->
+                            <div class="back">
+                                <div>
+                                    <p>
+                                        <!-- <em>"ya idaṁ paramaṁ guhyaṁ
+                                        mad-bhakteṣv abhidhāsyati
+                                        bhaktiṁ mayi parāṁ kṛtvā
+                                        mām evaiṣyaty asaṁśayaḥ"</em> -->
+
+                                        <em>"One who explains this supreme secret to the devotees is guaranteed pure
+                                            devotional service and will come back to Me."<br></em>
+                                        – <strong>Bhagavad Gita 18.68 <br></strong>
+                                        Our live Gita study sessions explore Krishna’s divine wisdom, making spiritual
+                                        knowledge practical and transformational.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="feature-box">
+                        <div class="feature-inner">
+                            <div class="front">
+                                <div>
+                                    <h4>🎶 Daily Japa & Sankirtan Sessions</h4>
+                                    <a href="{% url 'courses' %}" class="hero_box_link">VIEW MORE</a>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div>
+                                    <p>
+                                        <!-- <em>"harer nāma harer nāma<br>
+                                        harer nāmaiva kevalam<br>
+                                        kalau nāsty eva nāsty eva<br>
+                                        nāsty eva gatir anyathā"<br></em> -->
+
+                                        <em>"In this age of Kali, there is no other way, no other way, no other way than
+                                            chanting the holy name of the Lord."<br></em>
+                                        <strong> – Bṛhan-nāradīya Purāṇa<br> </strong>
+                                        We conduct daily guided japa sessions and vibrant sankirtans, allowing devotees
+                                        to experience the ecstatic bliss of Krishna’s holy names.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="feature-box">
+                        <div class="feature-inner">
+                            <div class="front">
+                                <div>
+                                    <h4>🛕 Dham Yatra (Spiritual Pilgrimages)</h4>
+                                    <a href="{% url 'teachers' %}" class="hero_box_link">VIEW MORE</a>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div>
+                                    <p>
+                                        <!-- <em>"śrīmad-bhāgavatārthānām<br>
+                                            āsvādo rasikaiḥ saha<br>
+                                            sarva-tīrthāvasānānāṁ<br>
+                                            prāyaścittaṁ na śobhate"<br></em> -->
+                                        <em>"Associating with devotees and relishing the Srimad Bhagavatam is more
+                                            purifying than visiting all the holy places combined."</em><br>
+                                        <strong>– Srimad Bhagavatam 11.5.31<br></strong>
+                                        We organize pilgrimages to sacred dhamas like Vrindavan, Barsana, Jagannath
+                                        Puri, and other spiritual sanctuaries, helping devotees connect with Krishna’s
+                                        divine presence.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Team Start -->
+    <div id="our-team" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                <p class="fs-5 fw-bold text-primary">Our Team</p>
+                <h1 class="display-5 mb-5">The Power Trio Behind HKD 🏆✨</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-dlp.jpg' %}" alt="">
+                        <div class="team-text">
+                            <h4 class="mb-0">Dhira Lalit Das</h4>
+                            <p class="text-primary">Founder, HKD</p>
+                            <div class="team-social d-flex">
+                                <a class="btn btn-square rounded-circle me-2"
+                                    href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                    target="_blank"><i class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square rounded-circle me-2" href="https://wa.me/918109769962"
+                                    target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-ard.jpg' %}" alt="">
+                        <div class="team-text">
+                            <h4 class="mb-0">Anatarupa Rama Das</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                            <div class="team-social d-flex">
+                                <a class="btn btn-square rounded-circle me-2"
+                                    href="https://www.instagram.com/anantarupa_rama_das?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+                                        class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square rounded-circle me-2" href="https://wa.me/918109769962"
+                                    target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-akd.jpg' %}" alt="">
+                        <div class="team-text">
+                            <h4 class="mb-0">Adbhoot Krishna Das</h4>
+                            <p class="text-primary">Senior Seve Member</p>
+                            <div class="team-social d-flex">
+                                <a class="btn btn-square rounded-circle me-2"
+                                    href="https://www.instagram.com/being.akd.8?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i
+                                        class="fab fa-instagram"></i></a>
+                                <a class="btn btn-square rounded-circle me-2" href="https://wa.me/918109769962"
+                                    target="_blank"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Team Start -->
+    <div class="team-container py-5">
+        <div class="inner-team-container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                <p class="fs-5 fw-bold text-primary">Our Team</p>
+                <h1 class="display-5 mb-5">The Power Squad Behind HKD 🏆✨</h1>
+            </div>
+            <div class="team-grid g-6">
+                <div class="team-column wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-devg.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Saumyashri Mataji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-ard.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Suraj Prabhuji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-lalit.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Lalit Prabhuji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-mishu.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Mishu Mataji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-gaurav.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Gaurav Prabhuji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-ram.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Ram Prabhuji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-sushil.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Sushil Prabhuji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-devg.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Deepa Mataji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-mohini.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Mohini Mataji</h4>
+                            <p class="text-primary">Online Class Coordinator</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-akshita.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Akshita Mataji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-dv.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Divyani Mataji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-roshan.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Raushan Prabhuji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-shaina.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Shaina Mataji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-devg.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Rishita Mataji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-column wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-card rounded">
+                        <img class="img-fluid" src="{% static 'images/profile-avp.jpg' %}" alt="">
+                        <div class="team-info">
+                            <h4 class="mb-0">Amiya Vilasa Prabhuji</h4>
+                            <p class="text-primary">Senior Seva Member</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Our Office</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Ujjain, MP, India</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 8109769962</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>hkdsupport@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="social-icon btn btn-link text-light p-0 mb-3"
+                            href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a class="social-icon btn btn-link text-light p-0 mb-3"
+                        href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank">
+                        <i class="fab fa-youtube fa-lg"></i>
+                    </a>
+                    <a class="social-icon btn btn-link text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank">
+                        <i class="fab fa-whatsapp fa-lg"></i>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Quick Links</h4>
+
+                    <p class="mb-2"> <a href="{% url 'home' %}">About Us</a></p>
+                    <p class="mb-2"> <a href="{% url 'courses' %}">Courses</a></p>
+                    <p class="mb-2"> <a href="{% url 'gallary' %}">Gallary</a></p>
+                    <p class="mb-2"> <a href="{% url 'donate' %}" href="">Donate</a></p>
+
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-white mb-4">Subscribe</h4>
+                    <p>Take the first step towards a spiritually fulfilling life!</p>
+                    <div class="position-relative w-100">
+                        <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text"
+                            placeholder="Your email">
+                        <button type="button"
+                            class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="{% url 'home' %}">harekrishnadevotion</a>, All Right Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="{% url 'about' %}" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+    <script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/parallax/parallax.min.js' %}"></script>
+    <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <div id="preloader"></div>
+
+
+    <!--  Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/calendar.js' %}"></script>
+    <script src="{% static 'js/about.js' %}"></script>
+</body>
+
+</html>

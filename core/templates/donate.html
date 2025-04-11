@@ -1,0 +1,529 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hare Krishna Devotion</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicon -->
+  <link href="{% static 'images/logo.png' %}" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+  <!--  Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/calendar.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/donate.css' %}">
+</head>
+
+<body>
+
+  <!-- Spinner Start -->
+  <div id="spinner"
+    class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+  </div>
+  <!-- Spinner End -->
+
+  <!-- Vertical Sidebar Start -->
+  <div class="vertical-sidebar text-light d-flex flex-column align-items-center justify-content-center py-4 px-3">
+    <div class="d-flex flex-column align-items-center">
+      <a class="social-icon btn btn-link text-light p-0 mb-3"
+        href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+        target="_blank">
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      <a class="social-icon btn btn-link text-light p-0 mb-3"
+        href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank">
+        <i class="fab fa-youtube fa-lg"></i>
+      </a>
+      <a class="social-icon btn btn-link text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank">
+        <i class="fab fa-whatsapp fa-lg"></i>
+      </a>
+      <div class="calendar-container-widget">
+        <a class="social-icon btn btn-link text-light p-0" id="calendar-icon">
+          <i class="fas fa-calendar-alt fa-lg"></i>
+        </a>
+        <div class="calendar-widget" id="calendar-widget">
+          <div id="calendar"></div>
+          <div id="event-tooltip" class="event-widget" style="display: none; position: absolute;"></div>
+          <div class="calendar-buttons">
+            <a href="{% url 'calendar' %}" class="btn" id="full-calendar">Discover</a>
+            <button id="close-calendar">&times; Close</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <div class="header navbar navbar-expand-lg navbar-light bg-white shadow-lg sticky-top mx-auto rounded"
+    style="max-width: 100%; height: 90px; padding: 10px 0; margin-top: 0; z-index: 1030;">
+
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" height="50" width="50" class="me-3 logo-circle">
+        <span class="hkd-logo-text" id="animated-text">Hare Krishna Devotion</span>
+      </a>
+
+      <!-- Navbar Toggler (Needed for Mobile Screens) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation Links (Wrapped in Collapse) -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto" style="font-size: 1.1rem; font-weight: 500;">
+          <li class="nav-item me-4">
+            <a class="nav-link" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item me-4">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item me-4">
+            <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+          </li>
+
+          <!-- Dropdown -->
+          <li class="nav-item dropdown me-4">
+            <a class="nav-link dropdown-toggle" href="#" id="quickLinksDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Quick Links</a>
+            <ul class="dropdown-menu" aria-labelledby="quickLinksDropdown">
+              <li><a class="dropdown-item" href="{% url 'calendar' %}">Vaishnav Calendar</a></li>
+              <li><a class="dropdown-item" href="{% url 'library' %}">Read With Us</a></li>
+              <li><a class="dropdown-item" href="{% url 'counter' %}">Chant With Us</a></li>
+              <li><a class="dropdown-item" href="{% url 'gallary' %}">Gallery</a></li>
+              <li><a class="dropdown-item" href="{% url 'teachers' %}">Our Teacher</a></li>
+              <li><a class="dropdown-item" href="{% url 'about' %}#our-team">Our Team</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown me-4">
+            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Contact Us</a>
+            <ul class="dropdown-menu" aria-labelledby="contactDropdown">
+              <li><a class="dropdown-item" href="tel:+918109769962" target="_blank">Call Us</a></li>
+              <li><a class="dropdown-item" href="https://wa.me/918109769962" target="_blank">WhatsApp
+                  Us</a></li>
+              <li><a class="dropdown-item" href="mailto:harekrishnadevotion@gmail.com" target="_blank">Email Us</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Donate Button -->
+        <div class="d-flex align-items-center  px-4 py-2 rounded ms-4">
+          <a href="{% url 'donate' %}" class="btn-donate" target="_blank">Donate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar End -->
+
+  <div class="hamburger-menu d-lg-none" onclick="openNav()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+
+  <div class="container-xxl py-5">
+    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+      <h1 class="display-5 mb-5">Serve with Love, Give with Purpose</h1>
+      <p class="fs-5 fw-bold">
+        Giving is not just about making a donation — it’s about making a difference in someone’s spiritual
+        journey.<br><br>
+        <em class="text-primary">Every lamp you light in Krishna’s service brings light to countless
+          hearts.</em><br><br>
+        Your generous contribution empowers our community to serve, grow, and inspire. Whether it’s sponsoring a sacred
+        book, offering a nourishing meal, or supporting temple development, you are investing in eternal spiritual
+        benefit — for yourself and for others.
+      </p>
+
+      <!-- Horizontal line -->
+      <hr class="my-4 border-primary" style="opacity: 2.5;">
+    </div>
+    <br>
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+          <h1 class="fs-5 fw-bold text-primary">Why Your Donation Matters</h1>
+          <p class="display-5 mb-4">Your donations support spiritual education.</p>
+
+          <blockquote class="blockquote mt-4">
+            <p class="mb-0">"A gift that is given out of duty, at the proper time and place, to a worthy person and
+              without expectation of return, is considered to be in the mode of goodness."</p><br>
+            <footer class="blockquote-footer">Bhagavad Gita 17.20</footer>
+          </blockquote>
+
+          <div class="container-dana">
+            <!-- Repeatable Dana Card -->
+            <div class="card shadow-sm mb-4 border-0">
+              <div class="card-body d-flex align-items-start">
+                <div class="fs-3 text-primary me-3">🍛</div>
+                <div>
+                  <h5 class="card-title mb-1 text-primary">Anna Dāna (Food Donation)</h5>
+                  <p class="mb-0"><em>“Offering food to the needy is the highest form of charity.”</em> As mentioned in
+                    the Bhagavatam and reinforced through Vedic traditions, feeding the hungry (prasadam distribution)
+                    purifies the giver and nourishes the soul of the receiver.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+              <div class="card-body d-flex align-items-start">
+                <div class="fs-3 text-primary me-3">📚</div>
+                <div>
+                  <h5 class="card-title mb-1 text-primary">Vidyā Dāna (Knowledge Donation)</h5>
+                  <p class="mb-0"><em>“Sharing spiritual wisdom is eternal charity.”</em> Bhagavad Gita 4.34 encourages
+                    seekers to approach a spiritual master and gain knowledge. Donating books like the Gita or
+                    supporting education is considered highly meritorious.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+              <div class="card-body d-flex align-items-start">
+                <div class="fs-3 text-primary me-3">🐄</div>
+                <div>
+                  <h5 class="card-title mb-1 text-primary">Go Dāna (Cow Donation/Protection)</h5>
+                  <p class="mb-0"><em>“Serving the cow is serving dharma itself.”</em> Bhagavatam extols the virtues of
+                    cow protection. Go Dāna is especially praised in scriptures for sustaining life, agriculture, and
+                    purity.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+              <div class="card-body d-flex align-items-start">
+                <div class="fs-3 text-primary me-3">🌾</div>
+                <div>
+                  <h5 class="card-title mb-1 text-primary">Bhū Dāna (Land Donation)</h5>
+                  <p class="mb-0"><em>“Donating land for temples or service is glorified in shastra.”</em> Offered in
+                    Srimad Bhagavatam and other Puranas, this dāna supports the establishment of spiritual centers and
+                    Ashrams.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+              <div class="card-body d-flex align-items-start">
+                <div class="fs-3 text-primary me-3">💊</div>
+                <div>
+                  <h5 class="card-title mb-1 text-primary">Aushadha Dāna (Medicine Donation)</h5>
+                  <p class="mb-0"><em>“Serving the sick is like serving God.”</em> Mentioned in texts like the Garuda
+                    Purana, this charity supports the diseased and helps reduce karmic burdens.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow-sm mb-4 border-0">
+              <div class="card-body d-flex align-items-start">
+                <div class="fs-3 text-primary me-3">💧</div>
+                <div>
+                  <h5 class="card-title mb-1 text-primary">Jala Dāna (Water Donation)</h5>
+                  <p class="mb-0"><em>“To give water is to give life.”</em> Highly recommended during hot seasons,
+                    offering water or building wells is mentioned in the Bhagavatam and other dharma texts as punya
+                    (pious).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="row g-4 align-items-stretch">
+            <!-- ensures equal height columns -->
+            <!-- Card 1: Prasadam Distribution -->
+            <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+              <div class="text-center rounded py-5 px-4 shadow-hover h-100 d-flex flex-column">
+                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                  <i class="fa fa-rocket fa-3x text-primary"></i>
+                </div>
+                <h4 class="mb-3">Prasadam Distribution</h4>
+                <p class="mb-0 small mt-auto">Donations enable hot meals for pilgrims, devotees & those in need —
+                  nourishing body and soul.</p>
+              </div>
+            </div>
+
+            <!-- Card 2: Gita Book Sponsorship -->
+            <div class="col-md-6 wow fadeIn" data-wow-delay="0.2s">
+              <div class="text-center rounded py-5 px-4 shadow-hover h-100 d-flex flex-column">
+                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                  <i class="fa fa-book fa-3x text-primary"></i>
+                </div>
+                <h4 class="mb-3">Gita Book Sponsorship</h4>
+                <p class="mb-0 small mt-auto">Vidyā Dāna helps print and distribute Bhagavad Gita books to seekers
+                  across the globe.</p>
+              </div>
+            </div>
+
+            <!-- Card 3: Cow Protection Shelter -->
+            <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+              <div class="text-center rounded py-5 px-4 shadow-hover h-100 d-flex flex-column">
+                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                  <div class="fs-2">🐮</div>
+                </div>
+                <h4 class="mb-3">Cow Protection Shelter</h4>
+                <p class="mb-0 small mt-auto">Go Dāna supports our goshala — a safe space for cows with medical care,
+                  shelter, and love.</p>
+              </div>
+            </div>
+
+            <!-- Card 4: Village Health Camp -->
+            <div class="col-md-6 wow fadeIn" data-wow-delay="0.4s">
+              <div class="text-center rounded py-5 px-4 shadow-hover h-100 d-flex flex-column">
+                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                  <div class="fs-2">🩺</div>
+                </div>
+                <h4 class="mb-3">Village Health Camp</h4>
+                <p class="mb-0 small mt-auto">Aushadha Dāna funds medicines and mobile medical vans to serve remote
+                  communities.</p>
+              </div>
+            </div>
+
+            <div class="col-md-6 wow fadeIn" data-wow-delay="0.3s">
+              <div class="text-center rounded py-5 px-4 shadow-hover h-100 d-flex flex-column">
+                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                  <i class="fa fa-broadcast-tower fa-3x text-primary"></i>
+                </div>
+                <h4 class="mb-3">Online Preaching & Media Outreach</h4>
+                <p class="mb-0 small mt-auto">Support our digital preaching initiatives — reaching hearts through
+                  videos, podcasts, live sessions, and social media.</p>
+              </div>
+            </div>
+
+
+            <!-- Card 6: Temple Land Development -->
+            <div class="col-md-6 wow fadeIn" data-wow-delay="0.7s">
+              <div class="text-center rounded py-5 px-4 shadow-hover h-100 d-flex flex-column">
+                <div class="btn-square bg-light rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                  <i class="fa fa-music fa-3x text-primary"></i>
+                </div>
+                <h4 class="mb-3">Kirtan Equipment Donation</h4>
+                <p class="mb-0 small mt-auto">Help us spread the divine vibration of the holy names by supporting the
+                  purchase and maintenance of instruments used in kirtan and outreach.</p>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Types of Donations -->
+  <section id="donate" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5 text-primary">Choose a Way to Give</h2>
+      <div class="row g-4">
+
+        <!-- One-Time Donation -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card donation-card h-100 shadow text-center">
+            <div class="card-body">
+              <h5 class="card-title text-primary">One-Time Donation</h5>
+              <p class="card-text">Support us with a one-time offering. Every bit counts!</p>
+              <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#upiModal"
+                data-amount="201" data-purpose="Basic Seva">Donate ₹201</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Monthly Supporter -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card donation-card h-100 shadow text-center">
+            <div class="card-body">
+              <h5 class="card-title text-primary">Monthly Supporter</h5>
+              <p class="card-text">Become a recurring donor and help us plan sustainably.</p>
+              <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#upiModal"
+                data-amount="1001" data-purpose="Monthly Seva">Donate ₹1001</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Food for Life -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card donation-card h-100 shadow text-center">
+            <div class="card-body">
+              <h5 class="card-title text-primary">Food for Life</h5>
+              <p class="card-text">Feed the needy with prasadam. Sponsor meals and make a difference.</p>
+              <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#upiModal"
+                data-amount="701" data-purpose="Food Seva">Donate ₹701</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preaching -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card donation-card h-100 shadow text-center">
+            <div class="card-body">
+              <h5 class="card-title text-primary">Online Preaching and Media Outreach</h5>
+              <p class="card-text">Be part of preaching </p>
+              <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#upiModal"
+                data-amount="2501" data-purpose="Preaching Seva">Donate ₹2501</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gita Sponsorship -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card donation-card h-100 shadow text-center">
+            <div class="card-body">
+              <h5 class="card-title text-primary">Bhagavad Gita Sponsorship</h5>
+              <p class="card-text">Help spread sacred wisdom by sponsoring books for distribution.</p>
+              <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#upiModal"
+                data-amount="351" data-purpose="Gita Seva">Donate ₹351</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Festival Seva -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card donation-card h-100 shadow text-center">
+            <div class="card-body">
+              <h5 class="card-title text-primary">Festival Seva</h5>
+              <p class="card-text">Serve during festivals by sponsoring decorations, prasadam, or other arrangements.
+              </p>
+              <button class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#upiModal"
+                data-amount="1501" data-purpose="Festival Seva">Donate ₹1501</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade" id="upiModal" tabindex="-1" aria-labelledby="upiModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="upiModalLabel">Choose UPI App</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="donationInfoText">You're donating ₹<span id="donationAmount"></span> for "<span
+              id="donationPurpose"></span>".</p>
+          <button class="btn btn-outline-primary m-2" onclick="openUPIApp('gpay')">Google Pay</button>
+          <button class="btn btn-outline-success m-2" onclick="openUPIApp('phonepe')">PhonePe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+      <div class="container py-5">
+          <div class="row g-5">
+              <div class="col-lg-3 col-md-6">
+                  <h4 class="text-white mb-4">Our Office</h4>
+                  <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Ujjain, MP, India</p>
+                  <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 8109769962</p>
+                  <p class="mb-2"><i class="fa fa-envelope me-3"></i>hkdsupport@gmail.com</p>
+                  <div class="d-flex pt-2">
+                      <a class="social-icon btn btn-link text-light p-0 mb-3"
+                          href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                          <i class="fab fa-instagram fa-lg"></i>
+                      </a>
+                      <a class="social-icon btn btn-link text-light p-0 mb-3"
+                      href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank">
+                      <i class="fab fa-youtube fa-lg"></i>
+                  </a>
+                  <a class="social-icon btn btn-link text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank">
+                      <i class="fab fa-whatsapp fa-lg"></i>
+                  </a>
+                  </div>
+              </div>
+
+              <div class="col-lg-3 col-md-6">
+                  <h4 class="text-white mb-4">Quick Links</h4>
+
+                  <p class="mb-2"> <a href="{% url 'home' %}">About Us</a></p>
+                  <p class="mb-2"> <a href="{% url 'courses' %}">Courses</a></p>
+                  <p class="mb-2"> <a href="{% url 'gallary' %}">Gallary</a></p>
+                  <p class="mb-2"> <a href="{% url 'donate' %}" href="">Donate</a></p>
+
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <h4 class="text-white mb-4">Subscribe</h4>
+                  <p>Take the first step towards a spiritually fulfilling life!</p>
+                  <div class="position-relative w-100">
+                      <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text"
+                          placeholder="Your email">
+                      <button type="button"
+                          class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Footer End -->
+
+
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright py-4">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                  &copy; <a class="border-bottom" href="{% url 'home' %}">harekrishnadevotion</a>, All Right Reserved.
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Copyright End -->
+
+
+
+  <!-- Back to Top -->
+  <a href="{% url 'about' %}" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+      class="bi bi-arrow-up"></i></a>
+
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+  <script src="{% static 'plugins/greensock/animation.gsap.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'lib/parallax/parallax.min.js' %}"></script>
+  <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+
+  <!--  Javascript -->
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/calendar.js' %}"></script>
+  <script src="{% static 'js/donate.js' %}"></script>
+</body>
+
+</html>
