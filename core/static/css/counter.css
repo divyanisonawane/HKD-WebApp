@@ -8,15 +8,15 @@ body {
 h1 {
   font-size: 1.8rem;
   margin-bottom: 30px;
-  color: #5d4037;
+  color: var(--dark);
 }
 
 .counter {
   margin: 20px auto;
   padding: 20px;
   border-radius: 20px;
-  background-color: #f7e8a4;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--yellow-highlight);
+  box-shadow: 0 4px 10px var(--dark);
   max-width: 400px;
 }
 
@@ -28,7 +28,7 @@ h2 {
 .number {
   font-size: 3rem;
   margin: 10px 0;
-  color: #cc6600;
+  color: var(--orange);
 }
 
 .btn-group {
@@ -49,20 +49,20 @@ button {
 }
 
 .increment {
-  background-color: #ffd54f;
+  background-color: var(--light-yellow-highlight);
 }
 
 .increment:hover {
-  background-color: #ffca28;
+  background-color: var(--light-yellow-highlight);
 }
 
 .reset {
-  background-color: #ef5350;
-  color: white;
+  background-color: var(--orange);
+  color: var(--light-yellow-highlight);
 }
 
 .reset:hover {
-  background-color: #e53935;
+  background-color: var(--primary);
 }
 
 @media (max-width: 480px) {
@@ -80,32 +80,3 @@ button {
   }
 }
 
-/* Spinner Styling */
-#spinner {
-  background-color: white;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spinner-border {
-  width: 3rem;
-  height: 3rem;
-  border: 0.3rem solid #ccc;
-  border-top-color: #2196f3;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}

@@ -3,11 +3,11 @@
     transition: all 0.3s ease-in-out;
   }
   .donate-btn {
-    background-color: #ff9933;
+    background-color: var(--orange);
     border: none;
   }
   .donate-btn:hover {
-    background-color: #cc7a00;
+    background-color: var(--orange);
   }
 
 

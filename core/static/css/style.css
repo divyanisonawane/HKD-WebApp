@@ -13,17 +13,11 @@
 
 :root {
     --primary: #6f183e;
-    /* Deep Maroon */
     --secondary: #610035;
-    /* Dark Purple */
     --yellow-highlight: #fada7a;
-    /* Muted Pink */
     --dark: #610034;
-    /* Rich Plum */
     --light-yellow-highlight: #eee2dc;
-    /* Dark Magenta */
     --pink-highlight: #7d476d;
-    /* Dusty Rose */
     --orange: #ff9d23;
     --blue-highlight: #53cde2;
 }
@@ -82,7 +76,6 @@ h6,
 
 .logo_container {
     flex-grow: 1;
-    /* This will push the menu to the right dynamically */
 }
 
 /*** Button ***/
@@ -380,7 +373,6 @@ h6,
 }
 
 /*** Testimonial ***/
-
 .testimonial-carousel .owl-item img {
     width: 100px;
     height: 100px;
@@ -535,7 +527,8 @@ h6,
     padding: 30px;
     border-radius: 8px;
     min-height: 160px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 20px var(--pink-highlight);
 }
 
 .feature-box:hover {
@@ -588,7 +581,6 @@ h6,
 
 /********** General Navbar Styling **********/
 
-/* Ensure the header (navbar) is correctly styled */
 .header {
     display: flex;
     align-items: center;
@@ -596,10 +588,9 @@ h6,
     height: 90px;
     padding: 10px 20px;
     background-color: var(--dark) !important;
-    /* Maintain original color */
 }
 
-/* Ensure container is centered */
+
 .header .container {
     display: flex;
     align-items: center;
@@ -607,8 +598,6 @@ h6,
 }
 
 /********** Navbar Links Styling **********/
-
-/* Style all navbar links */
 .navbar-nav .nav-link {
     color: var(--yellow-highlight) !important;
     font-weight: bold;
@@ -616,7 +605,6 @@ h6,
     transition: color 0.3s ease-in-out;
 }
 
-/* Change color on hover */
 .navbar-nav .nav-link:hover {
     color: var(--light-yellow-highlight) !important;
     transform: scale(1.1);
@@ -624,14 +612,11 @@ h6,
         0 4px 8px var(--pink-highlight);
 }
 
-/* Style active navbar link */
 .navbar-nav .nav-link.active {
     color: var(--orange) !important;
 }
 
 /********** Navbar Dropdown Menu Styling **********/
-
-/* Dropdown background */
 .navbar-nav .dropdown-menu {
     background-color: var(--dark) !important;
     border-radius: 5px;
@@ -654,7 +639,6 @@ h6,
 
 /********** Navbar Toggler (Mobile Menu Button) **********/
 
-/* Style for the navbar toggler button */
 .navbar-toggler {
     border: none !important;
     outline: none !important;
@@ -662,12 +646,11 @@ h6,
     background-color: var(--yellow-highlight);
 }
 
-/* Custom color for the toggler icon */
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='var(--yellow-highlight)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-/* Change background when toggler is active */
+
 .navbar-toggler:focus,
 .navbar-toggler:hover {
     background-color: var(--primary) !important;
@@ -677,32 +660,27 @@ h6,
 
 /* Mobile navigation styles */
 @media (max-width: 991px) {
-
-    /* Style collapsed menu */
+   
     .navbar-collapse {
         background-color: var(--dark) !important;
         padding: 10px 20px;
         border-radius: 8px;
     }
 
-    /* Center menu items */
     .navbar-nav {
         text-align: center;
         width: 100%;
     }
 
-    /* Ensure menu items are spaced */
     .navbar-nav .nav-item {
         margin-bottom: 10px;
     }
 
-    /* Full-width dropdown menu */
     .navbar-nav .dropdown-menu {
         width: 100%;
         text-align: center;
     }
 
-    /* Move donate button to center */
     .header .btn-donate {
         display: block;
         width: 100%;
@@ -716,9 +694,7 @@ h6,
 /* Main donate button styling */
 .btn-donate {
     background-color: var(--primary);
-    /* Use your theme color */
     color: var(--yellow-highlight);
-    /* Text color */
     font-weight: bold;
     padding: 12px 24px;
     border-radius: 6px;
@@ -732,7 +708,7 @@ h6,
     color: var(--yellow-highlight);
     font-size: 1.75rem;
     font-weight: bold;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 /* Vertical Sidebar */
@@ -756,9 +732,7 @@ h6,
 
 .social-icon:hover i {
     transform: scale(1.3);
-    /* Increase size */
     color: var(--yellow-highlight);
-    /* Change color */
 }
 
 .logo-circle {
@@ -770,7 +744,6 @@ h6,
 /* Hover effect on logo */
 .logo-circle:hover {
     transform: scale(1.1);
-    /* Slight zoom effect */
 }
 
 /* Animation for each letter */
@@ -809,7 +782,6 @@ p.mb-2 a:hover {
 
 .container-fluid.copyright {
     background-color: var(--primary);
-    /* Change to your desired color */
 }
 
 /* Change text color */
@@ -821,7 +793,6 @@ p.mb-2 a:hover {
 /* Change link hover effect */
 .container-fluid.copyright a:hover {
     color: var(--yellow-highlight) !important;
-    /* Adds a highlighted effect on hover */
 }
 
 /*course tiles */
@@ -831,9 +802,7 @@ p.mb-2 a:hover {
 
 .course-item:hover {
     background-color: var(--secondary);
-    /* Change to your preferred yellow-highlight color */
     transform: translateY(-5px);
-    /* Lift effect */
 }
 
 .course-item:hover .card-title a,
@@ -841,12 +810,10 @@ p.mb-2 a:hover {
 .course-item:hover .course_author_name,
 .course-item:hover .course_price {
     color: var(--yellow-highlight) !important;
-    /* Change text color on hover */
 }
 
 .course-item:hover .btn-primary {
     background-color: var(--yellow-highlight) !important;
-    /* Change button color on hover */
     border-color: var(--yellow-highlight) !important;
 }
 
@@ -854,7 +821,6 @@ p.mb-2 a:hover {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
     color: var(--yellow-highlight) !important;
-    /* Ensure text is visible */
 }
 
 .wow {
@@ -988,9 +954,7 @@ p.mb-2 a:hover {
 
 .btn-donate {
     background-color: var(--yellow-highlight) !important;
-    /* Use your theme color */
     color: var(--dark);
-    /* Text color */
     font-weight: bold;
     padding: 12px 24px;
     border-radius: 6px;
@@ -1009,9 +973,7 @@ p.mb-2 a:hover {
 /* Add border, shadow, and hover effect */
 .shadow-hover {
     border: 0.5px solid var(--orange);
-    /* Adds a subtle border */
     border-radius: 12px;
-    /* Smooth rounded corners */
     box-shadow: 0 4px 10px var(--pink-highlight);
     transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
@@ -1019,9 +981,7 @@ p.mb-2 a:hover {
 /* Hover Effect: Glow and lift */
 .shadow-hover:hover {
     box-shadow: 0 0 35px var(--pink-highlight) !important;
-    /* Glowing effect */
     transform: translateY(-5px);
-    /* Slightly lifts the item */
 }
 
 .counter::after {
@@ -1329,5 +1289,17 @@ strong {
     100% {
         text-shadow: 0 0 5px rgba(255, 165, 0, 0.3),
                      0 0 10px rgba(255, 165, 0, 0.3);
+    }
+}
+
+@media (max-width: 576px) {
+    .hkd-logo-text {
+        font-size: 1.2rem; /* smaller font size for mobile */
+    }
+}
+
+@media (max-width: 400px) {
+    .hkd-logo-text {
+        font-size: 1rem;
     }
 }
