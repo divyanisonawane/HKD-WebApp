@@ -29,7 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get("RENDER_EXTERNAL_HOSTNAME", "127.0.0.1"),
-    "harekrishnadevotion.in"
+    "harekrishnadevotion.in",
+    "www.harekrishnadevotion.in"
 ]
 
 # Application definition
