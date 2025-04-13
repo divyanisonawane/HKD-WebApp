@@ -1303,3 +1303,43 @@ strong {
         font-size: 1rem;
     }
 }
+
+
+/* Styles for the popup container */
+.popup {
+    display: none; /* Hide initially */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);  /* Semi-transparent background */
+    z-index: 9999;  /* Ensure the popup is on top */
+    overflow: auto;  /* Allow scrolling if content is too long */
+}
+
+/* Styles for the popup content */
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Center the content */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%;  /* Allow the popup to be responsive */
+    width: auto;  /* Let the width adjust based on content */
+    height: auto;  /* Let the height adjust based on content */
+    min-width: 300px;  /* Optional: Set a minimum width */
+    min-height: 200px;  /* Optional: Set a minimum height */
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}

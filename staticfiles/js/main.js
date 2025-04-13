@@ -126,3 +126,27 @@ document.addEventListener("DOMContentLoaded", function () {
         textElement.appendChild(span);
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    var messageDiv = document.getElementById('form-message');
+
+    if (messageDiv) {
+        var tag = messageDiv.getAttribute('data-tag');
+        var message = messageDiv.getAttribute('data-message');
+
+        if (tag === 'success') {
+            var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+        }
+
+        // Optional: handle error modal
+        if (tag === 'error') {
+            alert(message); // or show custom error modal/toast
+        }
+    }
+});
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+

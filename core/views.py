@@ -5,6 +5,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib import messages
+from django.db import models
 from .forms import Contact
 
 
@@ -92,15 +93,18 @@ def event_page(request, title):
         "next_title": next_title,
     })
 
-def contact_form_submission(request):
+def create_contact(request):
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
-        address = request.POST.get('address')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
         mobile = request.POST.get('mobile')
+        course = request.POST.get("course")
 
-        if name and email and address and mobile:
-            Contact.objects.create(name=name, email=email, address=address, mobile=mobile)
+
+        if name and email and city and state and mobile:
+            Contact.objects.create(name=name, email=email, city=city, state=state, mobile=mobile, course=course)
             messages.success(request, "Your contact details have been saved successfully!")
             return redirect('/')  # Redirect to home page or success page
         else:

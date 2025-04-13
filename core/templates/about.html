@@ -184,13 +184,13 @@
                         With faith, devotion, and service, we aim to bring more hearts closer to the divine love of
                         Radha-Krishna. Join us in this spiritual journey!
                     </p>
-                    <button id="openFormBtn"  class="btn btn-primary py-3 px-4" href="">Register Now!</a>
-                    
+                    <button id="openFormBtn" class="btn btn-primary py-3 px-4" href="">Register Now!</a>
+
                 </div>
                 <div id="popupForm" class="popup-overlay">
                     <div class="popup-content">
                         <span id="closePopupBtn" class="close-btn">&times;</span>
-                
+
                         <!-- Register Form Start -->
                         <div class="container-fluid quote py-5" data-parallax="scroll"
                             data-image-src="{% static 'images/carousel-2.jpg' %}">
@@ -204,30 +204,53 @@
                                                 <div class="row g-3">
                                                     <div class="col-sm-6">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control bg-light border-0" name="name" placeholder="Your Name" required>
+                                                            <input type="text" class="form-control bg-light border-0"
+                                                                name="name" placeholder="Your Name" required>
                                                             <label for="name">Your Name</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-floating">
-                                                            <input type="email" class="form-control bg-light border-0" name="email" placeholder="Your Email" required>
+                                                            <input type="email" class="form-control bg-light border-0"
+                                                                name="email" placeholder="Your Email" required>
                                                             <label for="email">Your Email</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control bg-light border-0" name="address" placeholder="Your Address" required>
-                                                            <label for="address">Your City, State</label>
+                                                            <input type="text" class="form-control bg-light border-0"
+                                                                name="city" placeholder="Your City" required>
+                                                            <label for="City">Your City</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6">
                                                         <div class="form-floating">
-                                                            <input type="text" class="form-control bg-light border-0" name="mobile" placeholder="Your Mobile" required>
+                                                            <input type="text" class="form-control bg-light border-0"
+                                                                name="state" placeholder="Your State" required>
+                                                            <label for="state">Your State</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-floating">
+                                                            <input type="text" class="form-control bg-light border-0"
+                                                                name="mobile" placeholder="Your Mobile" required>
                                                             <label for="mobile">Your Mobile</label>
                                                         </div>
                                                     </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-floating">
+                                                            <select class="form-select bg-light border-0" id="course" name="course" required>
+                                                                <option value="" disabled selected>Select a Course</option>
+                                                                <option value="Bhagavad Gita Course">Bhagavad Gita Course</option>
+                                                                <option value="Diksha Preparation Course">Diksha Preparation Course</option>
+                                                                <option value="Digital Marketing Course">Digital Marketing Course</option>
+                                                            </select>
+                                                            <label for="course">Select a Course</label>
+                                                        </div>
+                                                    </div>  
                                                     <div class="col-12 text-center">
-                                                        <button class="btn btn-primary py-3 px-4" type="submit">Submit Now</button>
+                                                        <button class="btn btn-primary py-3 px-4" type="submit">Submit
+                                                            Now</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -239,7 +262,7 @@
                         <!-- Register Form End -->
                     </div>
                 </div>
-                
+
 
                 <!-- Awards and Team Section -->
                 <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
@@ -308,7 +331,7 @@
                         </div>
                         <div class="service-text rounded p-4">
                             <div class="btn-square rounded-circle mx-auto mb-2">
-                                <i class="bi bi-music-note-beamed"  style="font-size: 2rem;"></i>
+                                <i class="bi bi-music-note-beamed" style="font-size: 2rem;"></i>
                             </div>
                             <h4 class="mb-3">Kīrtanam (Chanting)</h4>
                             <p class="text-muted">Engaging in daily mantra meditation (japa) and congregational kirtans
@@ -325,7 +348,7 @@
                         </div>
                         <div class="service-text rounded p-4">
                             <div class="btn-square rounded-circle mx-auto mb-2">
-                                <i class="bi bi-gem"  style="font-size: 2rem;"></i>
+                                <i class="bi bi-gem" style="font-size: 2rem;"></i>
                             </div>
                             <h4 class="mb-3">Smaranam (Remembering)</h4>
                             <p class="text-muted ">Meditating on Krishna’s pastimes, qualities, and name, fostering a
@@ -401,15 +424,15 @@
             </div>
 
             <div class="row services_row">
-
                 <div
                     class="col-lg-4 service-item text-center d-flex flex-column align-items-center justify-content-start">
                     <div class="icon_container d-flex flex-column justify-content-end">
                         <i class="bi bi-person-vcard-fill" style="font-size: 35px; color: #FF9D23;"></i>
                     </div>
                     <h3>👨‍🏫 Expert Mentor</h3>
-                    <h5> Learn from a Dedicated Devotee</h2>
-                        <p class="hover-p-text">Guidance from Dhir Lalit Das, who simplifies complex spiritual teachings and makes learning
+                    <h5 class="hover-p-text"> Learn from a Dedicated Devotee</h2>
+                        <p class="hover-p-text">Guidance from Dhira Lalit Das, who simplifies complex spiritual
+                            teachings and makes learning
                             deeply enriching.</p>
                 </div>
 
@@ -419,8 +442,9 @@
                         <i class="bi bi-people-fill" style="font-size: 35px; color: #FF9D23;"></i>
                     </div>
                     <h3>🌿 Devotee Association</h3>
-                    <h5> Grow Spiritually with Like-Minded Souls</h5>
-                    <p class="hover-p-text">Surround yourself with sincere devotees who uplift, inspire, and support you on your path
+                    <h5 class="hover-p-text"> Grow Spiritually with Like-Minded Souls</h5>
+                    <p class="hover-p-text">Surround yourself with sincere devotees who uplift, inspire, and support you
+                        on your path
                         to
                         Krishna consciousness.</p>
                 </div>
@@ -432,8 +456,9 @@
                         <i class="bi bi-camera-reels-fill" style="font-size: 35px; color: #FF9D23;"></i>
                     </div>
                     <h3>💻 Online Classes</h3>
-                    <h5>Learn Anytime, Anywhere</h5>
-                    <p class="hover-p-text">Join our interactive Bhagavad Gita & Srimad Bhagavatam classes from the comfort of your
+                    <h5 class="hover-p-text">Learn Anytime, Anywhere</h5>
+                    <p class="hover-p-text">Join our interactive Bhagavad Gita & Srimad Bhagavatam classes from the
+                        comfort of your
                         home,
                         with structured and engaging sessions.</p>
                 </div>
@@ -445,8 +470,9 @@
                         <i class="bi bi-question-diamond-fill" style="font-size: 35px; color: #FF9D23;"></i>
                     </div>
                     <h3>📝 Online Exams & Certifications</h3>
-                    <h5>Test Your Knowledge & Stay Motivated</h5>
-                    <p class="hover-p-text">Assess your learning with regular online exams and earn certificates to track your
+                    <h5 class="hover-p-text">Test Your Knowledge & Stay Motivated</h5>
+                    <p class="hover-p-text">Assess your learning with regular online exams and earn certificates to
+                        track your
                         spiritual
                         progress.</p>
                 </div>
@@ -457,8 +483,9 @@
                         <i class="bi bi-train-front-fill" style="font-size: 35px; color: #FF9D23;"></i>
                     </div>
                     <h3>🚩 Regular Dham Yatras</h3>
-                    <h5>Experience the Holy Dhams with Devotees</h5>
-                    <p class="hover-p-text">Join spiritually uplifting pilgrimages to Vrindavan, Mayapur, Jagannath Puri, and more,
+                    <h5 class="hover-p-text">Experience the Holy Dhams with Devotees</h5>
+                    <p class="hover-p-text">Join spiritually uplifting pilgrimages to Vrindavan, Mayapur, Jagannath
+                        Puri, and more,
                         walking in the footsteps of great vaishnavas.</p>
                 </div>
                 <div
@@ -467,8 +494,9 @@
                         <i class="bi bi-person-hearts" style="font-size: 35px; color: #FF9D23;"></i>
                     </div>
                     <h3>📖 Daily Spiritual Discussions</h3>
-                    <h5>Engage in Thought-Provoking Conversations</h5>
-                    <p class="hover-p-text">Participate in regular discussions on scriptures, philosophy, and practical applications
+                    <h5 class="hover-p-text">Engage in Thought-Provoking Conversations</h5>
+                    <p class="hover-p-text">Participate in regular discussions on scriptures, philosophy, and practical
+                        applications
                         of
                         Krishna consciousness in daily life.</p>
                 </div>
@@ -796,17 +824,20 @@
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 8109769962</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>hkdsupport@gmail.com</p>
                     <div class="d-flex pt-2">
-                        <a class="social-icon btn btn-link text-light p-0 mb-3"
-                            href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+                        <a class="social-icon text-light p-0 mb-3 me-3"
+                            href="https://www.instagram.com/hare_krishna_devotion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram fa-lg"></i>
                         </a>
-                        <a class="social-icon btn btn-link text-light p-0 mb-3"
-                        href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank">
-                        <i class="fab fa-youtube fa-lg"></i>
-                    </a>
-                    <a class="social-icon btn btn-link text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank">
-                        <i class="fab fa-whatsapp fa-lg"></i>
-                    </a>
+                        <a class="social-icon text-light p-0 mb-3 me-3"
+                            href="https://youtube.com/@harekrishnadevotion3094?si=PS3H3i4FS82qJ6nm" target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-youtube fa-lg"></i>
+                        </a>
+                        <a class="social-icon text-light p-0 mb-3" href="https://wa.me/918109769962" target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp fa-lg"></i>
+                        </a>
                     </div>
                 </div>
 

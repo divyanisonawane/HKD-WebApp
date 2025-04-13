@@ -1,0 +1,82 @@
+
+body {
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  color: var(--dark);
+}
+
+.counter {
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: var(--yellow-highlight);
+  box-shadow: 0 4px 10px var(--dark);
+  max-width: 400px;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.number {
+  font-size: 3rem;
+  margin: 10px 0;
+  color: var(--orange);
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1 1 45%;
+  max-width: 150px;
+}
+
+.increment {
+  background-color: var(--light-yellow-highlight);
+}
+
+.increment:hover {
+  background-color: var(--light-yellow-highlight);
+}
+
+.reset {
+  background-color: var(--orange);
+  color: var(--light-yellow-highlight);
+}
+
+.reset:hover {
+  background-color: var(--primary);
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .number {
+    font-size: 2.5rem;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}
+

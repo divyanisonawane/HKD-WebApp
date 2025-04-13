@@ -1,0 +1,14 @@
+.section-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--dark);
+  margin-bottom: 40px;
+}
+
+#digital-marketing,
+#diksha,
+#bg {
+  scroll-margin-top: 100px;
+}

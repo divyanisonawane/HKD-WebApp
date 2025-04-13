@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import about, home, courses, calendar,donate, event_page, contact_form_submission, gallary, library, counter, teachers
+from .views import about, home, courses, calendar,donate, event_page, create_contact, gallary, library, counter, teachers
 
 urlpatterns = [
     path('', home, name='home'),
@@ -16,5 +16,5 @@ urlpatterns = [
     path('donate', donate, name='donate'),
     path('counter', counter, name='counter'),
     path("events/<str:title>/", event_page, name="event_page"),
-    path('submit-contact/', contact_form_submission, name='submit_contact'),
+    path('submit-contact/', create_contact, name='submit_contact'),
 ]
