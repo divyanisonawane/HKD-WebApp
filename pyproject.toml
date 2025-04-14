@@ -3,6 +3,10 @@ name = "HKD-WEBAPP"
 version = "0.1.0"
 description = "Hare Krishna Devotion webapp"
 authors = ["Divyani Sonawane <sonawanedivyani148@gmail.com>"]
+packages = [
+  { include = "hkd" },
+  { include = "core" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"

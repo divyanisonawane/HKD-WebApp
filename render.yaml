@@ -10,8 +10,8 @@ services:
           name: hkddb
           property: connectionString
       - key: DJANGO_SU_NAME
-        value: admin
+        value: hkdadmin
       - key: DJANGO_SU_EMAIL
-        value: admin@example.com
+        value: sonawanedivyani148@gmail.com
       - key: DJANGO_SU_PASSWORD
-        value: strong-password-here
+        value: Hare@Krishna
