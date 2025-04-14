@@ -80,13 +80,22 @@ WSGI_APPLICATION = "hkd.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://hkdadmin:harekrishna@localhost:5432/hkddb',
-        conn_max_age=600,
-        ssl_require=False
-    )
-}
+RENDER = os.getenv('RENDER')
+if RENDER:  # running on Render
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=600,
+            ssl_require=True
+        )
+    }
+else:  # local
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='postgres://hkdadmin:harekrishna@localhost:5432/hkddb',
+            conn_max_age=600,
+            ssl_require=False
+        )
+    }
 
 CSRF_TRUSTED_ORIGINS = ['https://https://hkd-webapp.onrender.com']
 '''

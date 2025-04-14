@@ -26,22 +26,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function formatDate(dateStr) {
+        // Convert "MM/DD/YYYY" to "YYYY-MM-DD"
+        let [month, day, year] = dateStr.split("/");
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    }
+
     function parseCSV(csvText) {
         let events = {};
         let lines = csvText.split("\n").slice(1); // Remove header line
     
         lines.forEach(line => {
             let [start, end, title, url] = line.split(",");
-            if (start && title.includes("Ekadasi")) { // Filter events with "Ekadasi"
-                let dateParts = start.trim().split("/");
-                let eventDate = new Date(dateParts[2], dateParts[0] - 1, dateParts[1]);
-                let day = eventDate.getDate();
-                events[day] = title.trim();
+            if (start && title.includes("Ekadashi")) {
+                let formattedDate = formatDate(start.trim());
+                let dateObj = new Date(formattedDate);
+                let key = `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
+                events[key] = title.trim();
             }
         });
-    
+        console.log("Events", events)
         return events;
-        
     }
 
     function generateCalendar(events) {
@@ -70,10 +75,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else if (day > daysInMonth) {
                     break;
                 } else {
+                    let dateKey = `${currentYear}-${currentMonth + 1}-${day}`;
                     let className = "";
                     if (day === today.getDate()) className = "today";
-                    if (events[day]) className += " event-day";
-                    calendarHTML += `<td class="${className}" data-event="${events[day] || ''}" data-day="${day}">${day}</td>`;
+                    if (events[dateKey]) className += " event-day";
+                    calendarHTML += `<td class="${className}" data-event="${events[dateKey] || ''}" data-day="${day}">${day}</td>`;
                     day++;
                 }
             }
@@ -164,9 +170,13 @@ document.addEventListener("DOMContentLoaded", async function () {
             events: events.map(event => ({
                 ...event,
                 color: event.title.includes("Ekadashi") ? "#FF9D23" : event.color || "", // Keep default if no match
-                textColor: event.title.includes("Ekadasi") ? "white" : event.textColor || "" // Keep default if no match
-            }))
+            })),
             
+            eventClick: function(info) {
+                info.jsEvent.preventDefault();
+                const url = info.event.url || null;
+                showEventPopup(info.event.title, url);
+            }
         });
 
         calendar.render();
@@ -175,3 +185,28 @@ document.addEventListener("DOMContentLoaded", async function () {
     let events = await fetchEvents();
     generateCalendar(events);
 });
+
+function showEventPopup(title, url = null) {
+    const existingPopup = document.querySelector(".event-popup");
+    if (existingPopup) existingPopup.remove();
+
+    const popup = document.createElement("div");
+    popup.className = "event-popup";
+
+    const isValidURL = url && url.trim() !== "" && url.trim().toLowerCase() !== "/null" && url.trim().toLowerCase() !== "null";
+
+    const innerHTML = `
+        <div class="event-popup-inner">
+            <span class="close-btn">&times;</span>
+            <h2>${title}</h2>
+            ${isValidURL ? `<a href="${url}" target="_blank" class="read-more-btn">Read more</a>` : ""}
+        </div>
+    `;
+
+    popup.innerHTML = innerHTML;
+    document.body.appendChild(popup);
+
+    popup.querySelector(".close-btn").addEventListener("click", () => {
+        popup.remove();
+    });
+}

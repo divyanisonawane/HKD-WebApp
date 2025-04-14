@@ -75,3 +75,67 @@ body {
     color: var(--orange)!important; 
     text-decoration: underline !important; 
 }
+
+.fc .fc-daygrid-day-frame {
+    aspect-ratio: 1 / 1; /* Maintain square shape */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Responsive text size inside each day cell */
+.fc-daygrid-day-number,
+.fc-event {
+    font-size: calc(0.6vw + 0.6vh); 
+    line-height: 1.2;
+}
+
+.fc-event {
+    padding: 2px 4px;
+}
+
+.fc-daygrid-day-events {
+    overflow-y: auto;
+}
+
+#calendar {
+    height: 90vh; 
+}
+
+/* Force each week row to use equal height */
+.fc-scrollgrid-sync-table tr {
+    height: 1fr;
+}
+.event-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* trnasperent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.event-popup-inner {
+    background: var(--light-yellow-highlight);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.event-popup-inner h2 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+}
