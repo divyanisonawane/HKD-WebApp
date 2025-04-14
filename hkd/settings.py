@@ -13,6 +13,7 @@ import os
 import dj_database_url
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,8 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "unsafe-dev-key")
-DEBUG = os.getenv("DEBUG", "True") == "True"
+SECRET_KEY = "django-insecure-u0+2zvd*q6vz-0np0hq5k-h2&!-_aok66=q3&(l=2$filc*3b+"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -83,10 +83,7 @@ WSGI_APPLICATION = "hkd.wsgi.application"
 RENDER = os.getenv('RENDER')
 if RENDER:  # running on Render
     DATABASES = {
-        'default': dj_database_url.config(
-            conn_max_age=600,
-            ssl_require=True
-        )
+        'default': dj_database_url.parse("postgresql://hkd_postgres_db_user:zApour9yNoG9CAsW4O50MRfjEvbdJHgD@dpg-cvudkumuk2gs7389s1t0-a/hkd_postgres_db")
     }
 else:  # local
     DATABASES = {
@@ -97,7 +94,7 @@ else:  # local
         )
     }
 
-CSRF_TRUSTED_ORIGINS = ['https://https://hkd-webapp.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://hkd-webapp.onrender.com']
 '''
 superuser -> hkdadmin
 pass -> harekrishna

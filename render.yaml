@@ -5,6 +5,8 @@ services:
     buildCommand: "./build.sh"
     startCommand: "poetry run gunicorn hkd.wsgi:application"
     envVars:
+      - key: RENDER
+        value: true
       - key: DATABASE_URL
         fromDatabase:
           name: hkddb
@@ -14,4 +16,4 @@ services:
       - key: DJANGO_SU_EMAIL
         value: sonawanedivyani148@gmail.com
       - key: DJANGO_SU_PASSWORD
-        value: Hare@Krishna
+        value: harekrishna
