@@ -86,12 +86,8 @@ if RENDER:  # running on Render
         'default': dj_database_url.parse("postgresql://hkd_postgres_db_user:zApour9yNoG9CAsW4O50MRfjEvbdJHgD@dpg-cvudkumuk2gs7389s1t0-a/hkd_postgres_db")
     }
 else:  # local
-    DATABASES = {
-        'default': dj_database_url.config(
-            default='postgres://hkdadmin:harekrishna@localhost:5432/hkddb',
-            conn_max_age=600,
-            ssl_require=False
-        )
+   DATABASES = {
+        'default': dj_database_url.parse("postgresql://hkd_postgres_db_user:zApour9yNoG9CAsW4O50MRfjEvbdJHgD@dpg-cvudkumuk2gs7389s1t0-a.oregon-postgres.render.com/hkd_postgres_db")
     }
 
 CSRF_TRUSTED_ORIGINS = ['https://hkd-webapp.onrender.com']

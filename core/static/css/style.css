@@ -706,9 +706,11 @@ h6,
 
 .hkd-logo-text {
     color: var(--yellow-highlight);
-    font-size: 1.75rem;
+    font-size: clamp(0.85rem, 2vw, 1.5rem);
     font-weight: bold;
-    white-space: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Vertical Sidebar */
@@ -1291,18 +1293,66 @@ strong {
                      0 0 10px rgba(255, 165, 0, 0.3);
     }
 }
-
-@media (max-width: 576px) {
+/* Extra Large Devices (Desktops, large laptops) */
+@media (max-width: 1200px) {
     .hkd-logo-text {
-        font-size: 1.2rem; /* smaller font size for mobile */
+        font-size: 1.5rem;
     }
 }
 
+/* Large Devices (Desktops, laptops) */
+@media (max-width: 992px) {
+    .hkd-logo-text {
+        font-size: 1.4rem;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media (max-width: 768px) {
+    .hkd-logo-text {
+        font-size: 1.3rem;
+    }
+}
+
+/* Small Devices (Landscape phones) */
+@media (max-width: 576px) {
+    .hkd-logo-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Small Devices (Portrait phones) */
+@media (max-width: 480px) {
+    .hkd-logo-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* Very Small Devices */
 @media (max-width: 400px) {
     .hkd-logo-text {
         font-size: 1rem;
     }
 }
+
+@media (max-width: 360px) {
+    .hkd-logo-text {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .hkd-logo-text {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 280px) {
+    .hkd-logo-text {
+        font-size: 0.75rem;
+    }
+}
+
 
 
 /* Styles for the popup container */
